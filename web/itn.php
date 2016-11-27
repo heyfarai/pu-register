@@ -105,8 +105,8 @@
 
         if( !in_array( $_SERVER['REMOTE_ADDR'], $validIps ) )
         {
-            $pfError = true;
-            $pfErrMsg = PF_ERR_BAD_SOURCE_IP;
+            //$pfError = true;
+            //$pfErrMsg = PF_ERR_BAD_SOURCE_IP;
         }
     }
 
