@@ -12,7 +12,7 @@
       // Merchant details
       'merchant_id' => '10162531',
       'merchant_key' => '8y977fi4lmzok',
-      'return_url' => BASE_URL . 'thanks.php',
+      'return_url' => BASE_URL . 'thanks.php?8542',
       'cancel_url' => BASE_URL . 'cancelled.php',
       'notify_url' => BASE_URL . 'itn.php',
           'name_first' => 'First Name',
