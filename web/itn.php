@@ -100,7 +100,7 @@
         $validIps = array_unique( $validIps );
 
         error_log("Have some IP!");
-        error_log($validIps);
+        file_put_contents("php://stderr", $validIps);
 
         if( !in_array( $_SERVER['REMOTE_ADDR'], $validIps ) )
         {
