@@ -212,6 +212,9 @@
         if( strcmp( $result, 'VALID' ) == 0 )
         {
             // Process as required
+            file_put_contents("php://stderr", "PAYMENT SUCCESSFULL, HERE'S WHAT WE LEARNED:");
+            file_put_contents("php://stderr", $pfParamString);
+
         }
         // If the transaction was NOT valid
         else
