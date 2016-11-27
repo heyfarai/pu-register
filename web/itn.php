@@ -6,7 +6,7 @@
      * - Remember to set PAYFAST_SERVER to LIVE for production/live site
      */
     // General defines
-    define( 'PAYFAST_SERVER', 'LIVE' );
+    define( 'PAYFAST_SERVER', 'TEST' );
         // Whether to use "sandbox" test server or live server
     define( 'USER_AGENT', 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)' );
         // User Agent for cURL

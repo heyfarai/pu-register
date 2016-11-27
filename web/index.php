@@ -1,13 +1,13 @@
 <?php
 
   // If in testing mode use the sandbox domain ?  sandbox.payfast.co.za else www.payfast.co.za
-   $testingMode = false;
+   $testingMode = true;
    $pfHost = $testingMode ? 'sandbox.payfast.co.za' : 'www.payfast.co.za';
 
    $passPhrase = "reflexions";
     define('BASE_URL', 'https://boiling-hollows-82047.herokuapp.com/');
     $pfOutput = '';
-    $cartTotal = 5.00;
+    $cartTotal = 6500.00;
     $data = array(
       // Merchant details
       'merchant_id' => '10162531',
