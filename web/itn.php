@@ -61,7 +61,7 @@
         $pfTempParamString = $pfParamString;
 
         // If a passphrase has been set in the PayFast Settings, then it needs to be included in the signature string.
-        $passPhrase = 'XXXXX'; //You need to get this from a constant or stored in you website
+        $passPhrase = 'reflexions'; //You need to get this from a constant or stored in you website
         if( !empty( $passPhrase ) )
         {
             $pfTempParamString .= '&passphrase='.urlencode( $passPhrase );
