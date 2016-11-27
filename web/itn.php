@@ -99,6 +99,7 @@
         // Remove duplicates
         $validIps = array_unique( $validIps );
 
+        error_log("Have some IP!");
         error_log($validIps);
 
         if( !in_array( $_SERVER['REMOTE_ADDR'], $validIps ) )
