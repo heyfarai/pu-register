@@ -1,6 +1,4 @@
 <?php
-	use Monolog\Logger;
-	use Monolog\Handler\StreamHandler;
 	/**
 	 * Gets the current URL of the web server running the sample code
 	 *
