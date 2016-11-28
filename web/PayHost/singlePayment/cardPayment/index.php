@@ -141,13 +141,13 @@ XML;
 					<div class="collapse navbar-collapse" id="navbar-collapse">
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="/<?php echo $root; ?>/PayHost/singlePayment/cardPayment/index.php">Initiate</a>
+								<a href="/<?php echo $root; ?>/singlePayment/cardPayment/index.php">Initiate</a>
 							</li>
 							<li>
-								<a href="/<?php echo $root; ?>/PayHost/singleFollowUp/query.php">Query</a>
+								<a href="/<?php echo $root; ?>/singleFollowUp/query.php">Query</a>
 							</li>
 							<li>
-								<a href="/<?php echo $root; ?>/PayHost/singlePayment/cardPayment/simple_initiate.php">Simple initiate</a>
+								<a href="/<?php echo $root; ?>/singlePayment/cardPayment/simple_initiate.php">Simple initiate</a>
 							</li>
 						</ul>
 					</div>
