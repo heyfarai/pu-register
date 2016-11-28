@@ -89,8 +89,8 @@
 		<ns1:BudgetPeriod>0</ns1:BudgetPeriod>
 		<!-- 3D secure redirect object -->
 		<ns1:Redirect>
-			<ns1:NotifyUrl>{$fullPath['protocol']}{$fullPath['host']}/{$root}/PayHost/notify.php</ns1:NotifyUrl>
-			<ns1:ReturnUrl>{$fullPath['protocol']}{$fullPath['host']}/{$root}/PayHost/result.php</ns1:ReturnUrl>
+			<ns1:NotifyUrl>{$fullPath['protocol']}{$fullPath['host']}/{$root}/notify.php</ns1:NotifyUrl>
+			<ns1:ReturnUrl>{$fullPath['protocol']}{$fullPath['host']}/{$root}/result.php</ns1:ReturnUrl>
 			<!--  <ns1:Target>_self | _parent</ns1:Target>  -->
 		</ns1:Redirect>
 		<ns1:Order>

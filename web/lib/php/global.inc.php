@@ -1,4 +1,6 @@
 <?php
+	use Monolog\Logger;
+	use Monolog\Handler\StreamHandler;
 	/**
 	 * Gets the current URL of the web server running the sample code
 	 *
@@ -9,7 +11,7 @@
 		$url = array();
 
 		// set protocol
-		$url['protocol'] = 'http://';
+		$url['protocol'] = 'https://';
 		if (isset($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) === 'on' || $_SERVER['HTTPS'] == 1)) {
 			$url['protocol'] = 'https://';
 		} elseif (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
