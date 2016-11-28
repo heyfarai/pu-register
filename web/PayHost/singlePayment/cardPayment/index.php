@@ -118,8 +118,8 @@ XML;
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<title>PayHost - CardPayment</title>
-		<link rel="stylesheet" href="/<?php echo $root; ?>/lib/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/<?php echo $root; ?>/lib/css/core.css">
+		<link rel="stylesheet" href="/lib/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/lib/css/core.css">
 	</head>
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
@@ -134,7 +134,7 @@ XML;
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="">
-							<img alt="PayGate" src="/<?php echo $root; ?>/lib/images/paygate_logo_mini.png" />
+							<img alt="PayGate" src="/lib/images/paygate_logo_mini.png" />
 						</a>
 						<span style="color: #f4f4f4; font-size: 18px; line-height: 45px; margin-right: 10px;"><strong>PayHost Card Payment</strong></span>
 					</div>
@@ -176,7 +176,7 @@ XML;
 					<br>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-4">
-							<img src="/<?php echo $root; ?>/lib/images/loader.gif" alt="Processing" class="initialHide" id="authLoader">
+							<img src="/lib/images/loader.gif" alt="Processing" class="initialHide" id="authLoader">
 							<input class="btn btn-success btn-block" id="doAuthBtn" type="submit" name="btnSubmit" value="Do Auth" />
 						</div>
 					</div>
@@ -262,7 +262,7 @@ HTML;
 					<br>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-4">
-							<img src="/<?php echo $root; ?>/lib/images/loader.gif" alt="Processing" class="initialHide" id="submitLoader">
+							<img src="/lib/images/loader.gif" alt="Processing" class="initialHide" id="submitLoader">
 							<input class="btn btn-success btn-block" type="submit" name="submitBtn" id="doSubmitBtn" value="submit" data-toggle="modal" data-target="#authModal" />
 						</div>
 					</div>
@@ -292,7 +292,7 @@ HTML;
 	}?>
 			</div>
 		</div>
-		<script type="text/javascript" src="/<?php echo $root; ?>/lib/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="/<?php echo $root; ?>/lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/lib/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/lib/js/bootstrap.min.js"></script>
 	</body>
 </html>
