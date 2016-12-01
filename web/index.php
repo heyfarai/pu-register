@@ -5,7 +5,7 @@
    $pfHost = $testingMode ? 'sandbox.payfast.co.za' : 'www.payfast.co.za';
 
    $passPhrase = "reflexions";
-    define('BASE_URL', 'https://boiling-hollows-82047.herokuapp.com/');
+    define('BASE_URL', 'https://register.pixelup.co.za/');
     $pfOutput = '';
     $cartTotal = 6500.00;
     $data = array(
