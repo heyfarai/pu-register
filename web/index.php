@@ -6,6 +6,7 @@
 
    $passPhrase = "reflexions";
     define('BASE_URL', 'https://register.pixelup.co.za/');
+    
     $pfOutput = '';
     $cartTotal = 6500.00;
     $data = array(
