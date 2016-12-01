@@ -6,7 +6,7 @@
 
    $passPhrase = "reflexions";
     define('BASE_URL', 'https://register.pixelup.co.za/');
-    
+
     $pfOutput = '';
     $cartTotal = 6500.00;
     $data = array(
@@ -14,7 +14,7 @@
       'merchant_id' => '10002948',
       'merchant_key' => '0z5ngcoyonv4o',
       'return_url' => BASE_URL . 'thanks.php?8542',
-      'cancel_url' => BASE_URL . 'cancelled.php',
+      'cancel_url' => BASE_URL . 'thanks.php?action=cancel',
       'notify_url' => BASE_URL . 'itn.php',
           'name_first' => 'First Name',
           'name_last'  => 'Last Name',
