@@ -11,19 +11,32 @@
 	session_name('paygate_payweb3_testing_sample');
 	session_start();
 
-	include_once('../lib/php/global.inc.php');
+	include_once('../../lib/php/global.inc.php');
 
 	/*
 	 * Include the helper PayWeb 3 class
 	 */
-	require_once('paygate.payweb3.php');
+	require_once('../../lib/php/paygate.payweb3.php');
+    include_once('../../lib/php/config.inc.php');
+
+	$total_amount = "";
+
+	// how man
+	if(EARLY_BIRD==true){
+		$total_2days = EARLY_BIRD_2DAY_PRICE * $_POST['EARLY_BIRD_2DAY'];
+		$total_3days = EARLY_BIRD_3DAY_PRICE * $_POST['EARLY_BIRD_3DAY'];
+		$total_amount = $total_2days + $total_3days;
+	}
+
+	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 
 	$mandatoryFields = array(
 		'PAYGATE_ID'        => filter_var($_POST['PAYGATE_ID'], FILTER_SANITIZE_STRING),
 		'REFERENCE'         => filter_var($_POST['REFERENCE'], FILTER_SANITIZE_STRING),
-		'AMOUNT'            => filter_var($_POST['AMOUNT'], FILTER_SANITIZE_NUMBER_INT),
+		// 'AMOUNT'            => filter_var($_POST['AMOUNT'], FILTER_SANITIZE_NUMBER_INT),
+		'AMOUNT'            => filter_var($total_amount*100, FILTER_SANITIZE_NUMBER_INT),
 		'CURRENCY'          => filter_var($_POST['CURRENCY'], FILTER_SANITIZE_STRING),
-		'RETURN_URL'        => filter_var($_POST['RETURN_URL'], FILTER_SANITIZE_URL),
+		'RETURN_URL'        => $fullPath['protocol'] . $fullPath['host'] . '/complete/?t=' . $orderId,
 		'TRANSACTION_DATE'  => filter_var($_POST['TRANSACTION_DATE'], FILTER_SANITIZE_STRING),
 		'LOCALE'            => filter_var($_POST['LOCALE'], FILTER_SANITIZE_STRING),
 		'COUNTRY'           => filter_var($_POST['COUNTRY'], FILTER_SANITIZE_STRING),
@@ -34,23 +47,35 @@
 		'PAY_METHOD'        => (isset($_POST['PAY_METHOD']) ? filter_var($_POST['PAY_METHOD'], FILTER_SANITIZE_STRING) : ''),
 		'PAY_METHOD_DETAIL' => (isset($_POST['PAY_METHOD_DETAIL']) ? filter_var($_POST['PAY_METHOD_DETAIL'], FILTER_SANITIZE_STRING) : ''),
 		'NOTIFY_URL'        => (isset($_POST['NOTIFY_URL']) ? filter_var($_POST['NOTIFY_URL'], FILTER_SANITIZE_URL) : ''),
-		'USER1'             => (isset($_POST['USER1']) ? filter_var($_POST['USER1'], FILTER_SANITIZE_URL) : ''),
+		'USER1'             => $orderId,
 		'USER2'             => (isset($_POST['USER2']) ? filter_var($_POST['USER2'], FILTER_SANITIZE_URL) : ''),
 		'USER3'             => (isset($_POST['USER3']) ? filter_var($_POST['USER3'], FILTER_SANITIZE_URL) : ''),
 		'VAULT'             => (isset($_POST['VAULT']) ? filter_var($_POST['VAULT'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'VAULT_ID'          => (isset($_POST['VAULT_ID']) ? filter_var($_POST['VAULT_ID'], FILTER_SANITIZE_STRING) : '')
 	);
 
+	$ticketFields = array(
+		'buyerName'             => (isset($_POST['NAME']) ? filter_var($_POST['NAME'], FILTER_SANITIZE_STRING) : ''),
+		'buyerEmail'             => (isset($_POST['EMAIL']) ? filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL) : ''),
+		'buyerCompany'             => (isset($_POST['COMPANY']) ? filter_var($_POST['COMPANY'], FILTER_SANITIZE_STRING) : ''),
+		'full_2day'          => (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'full_3day'          => (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'earlyBird_2day'          => (isset($_POST['EARLY_BIRD_2DAY']) ? filter_var($_POST['EARLY_BIRD_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'earlyBird_3day'          => (isset($_POST['EARLY_BIRD_3DAY']) ? filter_var($_POST['EARLY_BIRD_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'orderAmount'          => $total_amount,
+		'orderId'          => $orderId
+	);
+
 	$data = array_merge($mandatoryFields, $optionalFields);
 
-	$encryption_key  = $_POST['encryption_key'];
+	$saved = saveTicketOrder(array_merge($data, $ticketFields));
 
 	/*
 	 * Set the session vars once we have cleaned the inputs
 	 */
 	$_SESSION['pgid']      = $data['PAYGATE_ID'];
 	$_SESSION['reference'] = $data['REFERENCE'];
-	$_SESSION['key']       = $encryption_key;
+	$_SESSION['key']       = ENKI;
 
 	/*
 	 * Initiate the PayWeb 3 helper class
@@ -63,7 +88,7 @@
 	/*
 	 * Set the encryption key of your PayGate PayWeb3 configuration
 	 */
-	$PayWeb3->setEncryptionKey($encryption_key);
+	$PayWeb3->setEncryptionKey(ENKI);
 	/*
 	 * Set the array of fields to be posted to PayGate
 	 */
@@ -79,45 +104,62 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<title>PayWeb 3 - Request</title>
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/core.css">
+		<title>Review you tickets — PIXEL UP!</title>
+		<link rel="stylesheet" href="/css/pixelup.css">
 	</head>
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
-			<nav class="navbar navbar-inverse navbar-fixed-top">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="">
-							<img alt="PayGate" src="/images/paygate_logo_mini.png" />
-						</a>
-						<span style="color: #f4f4f4; font-size: 18px; line-height: 45px; margin-right: 10px;"><strong>PayWeb 3</strong></span>
-					</div>
-					<div class="collapse navbar-collapse" id="navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li class="active">
-								<a href="<?php echo $directory; ?>index.php">Initiate</a>
-							</li>
-							<li>
-								<a href="<?php echo $directory; ?>query.php">Query</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-			<div style="background-color:#80b946; text-align: center; margin-top: 51px; margin-bottom: 15px; padding: 4px;"><strong>Step: Request / Redirect</strong></div>
 			<div class="container">
+				<h1>Everything look right?</h1>
+				<ul class="no-bullet">
+                                <li class="ticket ticket--flex">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            <?php echo $_POST['EARLY_BIRD_3DAY'] ?> x 3 Day Pass
+                                        </label>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              R <?php echo number_format($total_3days) ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ticket ticket--flex">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            <?php echo $_POST['EARLY_BIRD_2DAY'] ?> x 2 Day Pass
+                                        </label>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              R <?php echo number_format($total_2days) ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ticket ticket--flex">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            TOTAL
+                                        </label>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              <strong>R <?php echo number_format($total_amount) ?></strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
 				<form role="form" class="form-horizontal text-left" action="<?php echo $PayWeb3::$process_url ?>" method="post" name="paygate_process_form">
 					<div class="form-group">
-						<label for="PAYGATE_ID" class="col-sm-3 control-label">PayGate ID</label>
-						<p id="PAYGATE_ID" class="form-control-static"><?php echo $data['PAYGATE_ID']; ?></p>
+						<div class=" col-sm-offset-4 col-sm-4">
+							<input class="btn btn-success btn-block" type="submit" name="btnSubmit" value="PAY with credit card" />
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="REFERENCE" class="col-sm-3 control-label">Reference</label>
@@ -242,10 +284,6 @@ HTML;
 					</div>
 HTML;
 							} ?>
-					<div class="form-group">
-						<label for="encryption_key" class="col-sm-3 control-label">Encryption Key</label>
-						<p id="encryption_key" class="form-control-static"><?php echo $encryption_key; ?></p>
-					</div>
 					<?php if(isset($PayWeb3->processRequest) || isset($PayWeb3->lastError)){
 						/*
 						 * We have received a response from PayWeb3
@@ -302,11 +340,6 @@ HTML;
 						 */
 						?>
 					<br>
-					<div class="form-group">
-						<div class=" col-sm-offset-4 col-sm-4">
-							<input class="btn btn-success btn-block" type="submit" name="btnSubmit" value="Redirect" />
-						</div>
-					</div>
 					<?php } ?>
 					<br>
 				</form>

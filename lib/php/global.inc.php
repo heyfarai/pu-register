@@ -4,6 +4,50 @@
 	 *
 	 * @return array
 	 */
+
+	function getOrder($orderId){
+		// Get cURL resource
+		$curl = curl_init();
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => 'http://localhost:3000/api/order/' . $orderId
+		));
+		// Send the request & save response to $resp
+		$res = curl_exec($curl);
+		// Close request to clear up some resources
+		curl_close($curl);
+
+		return $res;
+	}
+
+	function saveTicketOrder($postData) {
+
+		$fields_string = "";
+		// $url = "https://hooks.zapier.com/hooks/catch/1239813/tixu5e/";
+		$url = "http://localhost:3000/api/order/create";
+
+		//url-ify the data for the POST
+		foreach($postData as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string, '&');
+
+		//open connection
+		$ch = curl_init();
+
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL, $url);
+		curl_setopt($ch,CURLOPT_POST, count($postData));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+		//execute post
+		$result = curl_exec($ch);
+
+		//close connection
+		curl_close($ch);
+
+		return $result;
+	}
+
 	function getCurrentUrl() {
 
 		$url = array();
@@ -61,7 +105,7 @@
 	 * @return string
 	 */
 	function generateReference(){
-		return 'pgtest_' . getDateTime('YmdHis');
+		return 'PIXELUP_' . getDateTime('YmdHis');
 	}
 
 	function getDateTime($format){
