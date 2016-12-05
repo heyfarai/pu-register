@@ -37,6 +37,15 @@
 				'REFERENCE'          => $_SESSION['reference'],
 				'CHECKSUM'           => $_POST['CHECKSUM']
 			);
+
+			$order = json_decode(getOrder($_GET['t']), true)['order'];
+			$backURL = "e2d=" . (isset($order['earlyBird_2day']) ? $order['earlyBird_2day'] : "")
+					. "&e3d=" . (isset($order['earlyBird_3day']) ? $order['earlyBird_3day'] : "")
+					. "&name=" . (isset($order['buyerName']) ? $order['buyerName'] : "")
+					. "&email=" . (isset($order['buyerEmail']) ? $order['buyerEmail'] : "")
+					. "&company=" . (isset($order['buyerCompany']) ? $order['buyerCompany'] : "")
+					. "&country=" . (isset($order['buyerName']) ? $order['buyerName'] : "");
+
 			/*
 			 * initiate the PayWeb 3 helper class
 			 */
@@ -50,112 +59,34 @@
 			 */
 			$is_valid_transaction = $PayWeb3->validateChecksum($data);
 			if($is_valid_transaction){
-				$orderResult = json_decode(getOrder($_GET['t']), true);
-				$orderData = $orderResult['order'];
-				$totalTickets = $orderData['earlyBird_2day'] + $orderData['earlyBird_3day'];
+				if($data['TRANSACTION_STATUS']==1):
+					// <!--	TRANSACTION: APPROVED	 -->
+					$successURL = $_GET['t'] . "/"
+								. $data['PAY_REQUEST_ID'] . "/"
+								. $data['PAYGATE_ID'] . "/"
+								. $data['CHECKSUM'] . "/" ;
+
+					header("Location: https://localhost:3001/register-tickets/$successURL");
+					die();
+
+					// echo "<h1>I'll send to KeystoneJS</h1>";
+					// echo "<a href='https://localhost:3001/register-tickets/$successURL'>https://localhost:3001/register-tickets/$successURL</a>";
+				else:
+					$backURL = "http://localhost:8888/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS'];
+					header("Location: $backURL");
+					die();
+				endif;
+			} else {
+				// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
+				echo "<h2>Throw a Something went wrong</h2>";
+
 			}
 		} else {
 			$is_incomplete_post_error = true;
 		}
+	} else {
+		// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
+		echo "<h2>Throw a 404</h2>";
 	}
 
-
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-	    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-	    <title>Transaction Complete — PIXEL UP!</title>
-		<link rel="stylesheet" href="/css/pixelup.css">
-	</head>
-	<body>
-		<div class="container-fluid" style="min-width: 320px;">
-			<div class="container">
-				<?php if($is_transaction): ?>
-					<?php if($is_valid_transaction): ?>
-						<?php if($data['TRANSACTION_STATUS']==0): ?>
-<!--	TRANSACTION: NOT DONE	 -->
-						<h1>You just paid €1</h1>
-						<?php endif ?>
-						<?php if($data['TRANSACTION_STATUS']==1): ?>
-<!--	TRANSACTION: APPROVED	 -->
-
-						<h1>All paid up.</h1>
-						<p>
-							Thanks <?php echo $orderData['buyerName'] ?>, you've bought <?php echo $orderData['earlyBird_2day'] + $orderData['earlyBird_3day']  ?> tickets for R <?php echo number_format($orderData['orderAmount']) ?>. <br />
-							We just need a few more details about the tickets.
-						</p>
-						<?php for($x = 1; $x <= $totalTickets; $x++): ?>
-						<div class="">
-							<h6>Ticket <?php echo $x ?></h6>
-							<ul class="no-bullet">
-								<li>
-									<div class="form-group">
-										<label for="AMOUNT" class="col-sm-3 control-label">Attendee's name?</label>
-										<div class="col-sm-6">
-											<input type="text" name="NAME" id="NAME" class="form-control" placeholder="First name" />
-											<input type="text" name="NAME" id="NAME" class="form-control" placeholder="Last name" />
-
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="form-group">
-										<label for="EMAIL" class="col-sm-3 control-label">Attendee email</label>
-										<div class="col-sm-6">
-											<input type="text" name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" value="farai@pixelup.co.za" />
-											<input type="text" name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" value="farai@pixelup.co.za" />
-
-
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="form-group">
-										<label for="EMAIL" class="col-sm-3 control-label">Attendee company</label>
-										<div class="col-sm-6">
-											<input type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Company name" />
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="form-group">
-										<label for="EMAIL" class="col-sm-3 control-label">Attendee twitter</label>
-										<div class="col-sm-6">
-											<input type="text" name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" value="farai@pixelup.co.za" />
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					<?php endfor ?>
-
-
-
-
-						<button>Do it later</button>
-						<?php endif ?>
-						<?php if($data['TRANSACTION_STATUS']==2): ?>
-<!--	TRANSACTION: DECLINED	 -->
-
-						<?php endif ?>
-						<?php if($data['TRANSACTION_STATUS']==3): ?>
-<!--	TRANSACTION: CANCELLED	 -->
-
-						<?php endif ?>
-						<?php if($data['TRANSACTION_STATUS']==4): ?>
-<!--	TRANSACTION: USER CANCELLED	 -->
-
-						<?php endif ?>
-					<?php endif ?>
-
-			<?php else: ?>
-<!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-				<h2>You've reached this page in error</h2>
-			<?php endif ?>
-			</div>
-        </div>
-		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-	</body>
-</html>

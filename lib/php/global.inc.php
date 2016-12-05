@@ -6,20 +6,20 @@
 	 */
 
 	function getOrder($orderId){
-		// Get cURL resource
-		$curl = curl_init();
-		// Set some options - we are passing in a useragent too here
-		curl_setopt_array($curl, array(
-		    CURLOPT_RETURNTRANSFER => 1,
-		    CURLOPT_URL => 'http://localhost:3000/api/order/' . $orderId
-		));
-		// Send the request & save response to $resp
-		$res = curl_exec($curl);
-		// Close request to clear up some resources
-		curl_close($curl);
+ 		// Get cURL resource
+ 		$curl = curl_init();
+ 		// Set some options - we are passing in a useragent too here
+ 		curl_setopt_array($curl, array(
+ 		    CURLOPT_RETURNTRANSFER => 1,
+ 		    CURLOPT_URL => 'http://localhost:3000/api/order/' . $orderId
+ 		));
+ 		// Send the request & save response to $resp
+ 		$res = curl_exec($curl);
+ 		// Close request to clear up some resources
+ 		curl_close($curl);
 
-		return $res;
-	}
+ 		return $res;
+ 	}
 
 	function saveTicketOrder($postData) {
 
@@ -38,6 +38,7 @@
 		curl_setopt($ch,CURLOPT_URL, $url);
 		curl_setopt($ch,CURLOPT_POST, count($postData));
 		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 
 		//execute post
 		$result = curl_exec($ch);
@@ -118,7 +119,6 @@
 		$country = 'ZAF';
 
 		$mostUsedCountryArray = array(
-			'DEU' => 'Germany',
 			'ZAF' => 'South Africa',
 			'USA' => 'United States'
 		);

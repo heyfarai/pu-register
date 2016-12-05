@@ -67,8 +67,17 @@
 	);
 
 	$data = array_merge($mandatoryFields, $optionalFields);
+	$fullData = array_merge($data, $ticketFields);
+	$backURL = "e2d=" . $fullData['earlyBird_2day']
+			. "&e3d=" . $fullData['earlyBird_3day']
+			. "&f2d=" . $fullData['full_2day']
+			. "&f3d=" . $fullData['full_3day']
+			. "&name=" . $fullData['buyerName']
+			. "&email=" . $fullData['buyerEmail']
+			. "&company=" . $fullData['buyerCompany']
+			. "&country=" . $fullData['buyerName'];
 
-	$saved = saveTicketOrder(array_merge($data, $ticketFields));
+	saveTicketOrder($fullData);
 
 	/*
 	 * Set the session vars once we have cleaned the inputs
@@ -109,208 +118,70 @@
 	</head>
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
+			<div class="top-bar--squeeze">
+				<img class="logo-mark" src="/img/logo-mark-pixelup--pink.svg" />
+			</div>
 			<div class="container">
-				<h1>Everything look right?</h1>
+				<h1 class="heading--center">Everything look right?</h1>
+
+				<h6 class="small-title">YOUR TICKETS</h6>
 				<ul class="no-bullet">
-                                <li class="ticket ticket--flex">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            <?php echo $_POST['EARLY_BIRD_3DAY'] ?> x 3 Day Pass
-                                        </label>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                              R <?php echo number_format($total_3days) ?>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="ticket ticket--flex">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            <?php echo $_POST['EARLY_BIRD_2DAY'] ?> x 2 Day Pass
-                                        </label>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                              R <?php echo number_format($total_2days) ?>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="ticket ticket--flex">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            TOTAL
-                                        </label>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                              <strong>R <?php echo number_format($total_amount) ?></strong>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+					<?php if((isset($_POST['EARLY_BIRD_3DAY']) && $_POST['EARLY_BIRD_3DAY'] > 0)) : ?>
+                    <li class="ticket ticket--flex">
+                        <div class="ticket__description-wrapper">
+                            <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                <?php echo $_POST['EARLY_BIRD_3DAY'] ?> x 3 Day Pass
+                            </label>
+                        </div>
+                        <div class="ticket__detail">
+                            <div class="ticket__price ticket__detail__item">
+                                <span>
+                                  R <?php echo number_format($total_3days) ?>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+					<?php endif ?>
+					<?php if(isset($_POST['EARLY_BIRD_2DAY']) && $_POST['EARLY_BIRD_2DAY'] > 0) : ?>
+                    <li class="ticket ticket--flex">
+                        <div class="ticket__description-wrapper">
+                            <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                <?php echo $_POST['EARLY_BIRD_2DAY'] ?> x 2 Day Pass
+                            </label>
+                        </div>
+                        <div class="ticket__detail">
+                            <div class="ticket__price ticket__detail__item">
+                                <span>
+                                  R <?php echo number_format($total_2days) ?>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+					<?php endif ?>
+                    <li class="ticket ticket--flex">
+                        <div class="ticket__description-wrapper">
+                            <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                <strong>TOTAL</strong>
+                            </label>
+                        </div>
+                        <div class="ticket__detail">
+                            <div class="ticket__price ticket__detail__item">
+                                <span>
+                                  <strong>R <?php echo number_format($total_amount) ?></strong>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 				<form role="form" class="form-horizontal text-left" action="<?php echo $PayWeb3::$process_url ?>" method="post" name="paygate_process_form">
 					<div class="form-group">
 						<div class=" col-sm-offset-4 col-sm-4">
-							<input class="btn btn-success btn-block" type="submit" name="btnSubmit" value="PAY with credit card" />
+							<a href="/?<?php echo $backURL ?>">Cancel payment. Back to tickets</a>
+							<button class="btn btn-success btn-block btn-form" type="submit" name="btnSubmit">PAY with credit card</button>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="REFERENCE" class="col-sm-3 control-label">Reference</label>
-						<p id="REFERENCE" class="form-control-static"><?php echo $data['REFERENCE']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="AMOUNT" class="col-sm-3 control-label">Amount</label>
-						<p id="AMOUNT" class="form-control-static"><?php echo $data['AMOUNT']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="CURRENCY" class="col-sm-3 control-label">Currency</label>
-						<p id="CURRENCY" class="form-control-static"><?php echo $data['CURRENCY']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="RETURN_URL" class="col-sm-3 control-label">Return URL</label>
-						<p id="RETURN_URL" class="form-control-static"><?php echo $data['RETURN_URL']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="LOCALE" class="col-sm-3 control-label">Locale</label>
-						<p id="LOCALE" class="form-control-static"><?php echo $data['LOCALE']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="COUNTRY" class="col-sm-3 control-label">Country</label>
-						<p id="COUNTRY" class="form-control-static"><?php echo $data['COUNTRY']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="TRANSACTION_DATE" class="col-sm-3 control-label">Transaction Date</label>
-						<p id="TRANSACTION_DATE" class="form-control-static"><?php echo $data['TRANSACTION_DATE']; ?></p>
-					</div>
-					<div class="form-group">
-						<label for="EMAIL" class="col-sm-3 control-label">Customer Email</label>
-						<p id="EMAIL" class="form-control-static"><?php echo $data['EMAIL']; ?></p>
-					</div>
-						<?php
-							$displayOptionalFields = false;
 
-							foreach(array_keys($optionalFields) as $key => $value){
-								if($data[$value] != ''){
-									$displayOptionalFields = true;
-								}
-							}
-
-							if($displayOptionalFields){
-								echo <<<HTML
-					<div class="well">
-HTML;
-
-
-								if($data['PAY_METHOD'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="PAY_METHOD" class="col-sm-3 control-label">Pay Method</label>
-						<p id="PAY_METHOD" class="form-control-static">{$data['PAY_METHOD']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['PAY_METHOD_DETAIL'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="PAY_METHOD_DETAIL" class="col-sm-3 control-label">Pay Method Detail</label>
-						<p id="PAY_METHOD_DETAIL" class="form-control-static">{$data['PAY_METHOD_DETAIL']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['NOTIFY_URL'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="NOTIFY_URL" class="col-sm-3 control-label">Notify Url</label>
-						<p id="NOTIFY_URL" class="form-control-static">{$data['NOTIFY_URL']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['USER1'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="USER1" class="col-sm-3 control-label">User Field 1</label>
-						<p id="USER1" class="form-control-static">{$data['USER1']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['USER2'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="USER2" class="col-sm-3 control-label">User Field 2</label>
-						<p id="USER2" class="form-control-static">{$data['USER2']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['USER3'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="USER3" class="col-sm-3 control-label">User Field 3</label>
-						<p id="USER3" class="form-control-static">{$data['USER3']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['VAULT'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="VAULT" class="col-sm-3 control-label">Vault</label>
-						<p id="VAULT" class="form-control-static">{$data['VAULT']}</p>
-					</div>
-HTML;
-								}
-
-								if($data['VAULT_ID'] != ''){
-									echo <<<HTML
-					<div class="form-group">
-						<label for="VAULT_ID" class="col-sm-3 control-label">Vault ID</label>
-						<p id="VAULT_ID" class="form-control-static">{$data['VAULT_ID']}</p>
-					</div>
-HTML;
-								}
-
-								echo <<<HTML
-					</div>
-HTML;
-							} ?>
-					<?php if(isset($PayWeb3->processRequest) || isset($PayWeb3->lastError)){
-						/*
-						 * We have received a response from PayWeb3
-						 */
-
-						/*
-						 * TextArea for display example purposes only.
-						 */
-						?>
-					<div class="form-group">
-						<label for="request">Request Result</label><br>
-						<textarea class="form-control" rows="3" cols="50" id="request"><?php
-							if (!isset($PayWeb3->lastError)) {
-								foreach($PayWeb3->processRequest as $key => $value){
-									echo <<<HTML
-{$key} = {$value}
-
-HTML;
-								}
-							} else {
-								/*
-								 * handle the error response
-								 */
-								echo $PayWeb3->lastError;
-							} ?>
-						</textarea>
-					</div>
+					<?php if(isset($PayWeb3->processRequest) || isset($PayWeb3->lastError)){ ?>
 					<?php
 						if (!isset($PayWeb3->lastError)) {
 							/*
@@ -346,6 +217,6 @@ HTML;
 			</div>
 		</div>
 		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/garlic.js"></script>
 	</body>
 </html>

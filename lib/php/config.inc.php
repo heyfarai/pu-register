@@ -6,4 +6,6 @@
     define ("EARLY_BIRD_2DAY_PRICE", 6500);
     define ("EARLY_BIRD_3DAY_PRICE", 8500);
 
+    define ("IS_LIVE", false);
+
 ?>
