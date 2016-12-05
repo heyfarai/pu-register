@@ -1,7 +1,6 @@
 {
   "require" : {
-    "monolog/monolog": "*",
-    "ext-soap": "*"
+        "monolog/monolog": "*"
   },
   "require-dev": {
 
