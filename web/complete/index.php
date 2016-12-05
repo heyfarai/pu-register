@@ -66,11 +66,13 @@
 								. $data['PAYGATE_ID'] . "/"
 								. $data['CHECKSUM'] . "/" ;
 
-					header("Location: https://tickets.pixelup.co.za/register-tickets/$successURL");
+					header("Location: https://localhost:3001/register-tickets/$successURL");
 					die();
 
+					// echo "<h1>I'll send to KeystoneJS</h1>";
+					// echo "<a href='https://localhost:3001/register-tickets/$successURL'>https://localhost:3001/register-tickets/$successURL</a>";
 				else:
-					$backURL = "https://register.pixelup.co.za?" . $backURL . "&err=" . $data['TRANSACTION_STATUS'];
+					$backURL = "http://localhost:8888/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS'];
 					header("Location: $backURL");
 					die();
 				endif;

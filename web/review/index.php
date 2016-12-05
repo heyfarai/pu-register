@@ -109,7 +109,14 @@
 	$returnData = $PayWeb3->doInitiate();
 
 ?>
-
+<!doctype html>
+<!--
+ ___ _         _   _   _      _
+| _ (_)_ _____| | | | | |_ __| |
+|  _/ \ \ / -_) | | |_| | '_ \_|
+|_| |_/_\_\___|_|  \___/| .__(_)
+                        |_|
+-->
 <html lang="en">
     <base href="/">
 	<head>
@@ -122,7 +129,8 @@
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
 			<div class="top-bar--squeeze">
-				<img class="logo-mark" src="/img/logo-mark-pixelup--pink.svg" />
+				<img class="logo-mark" src="/img/logo-mark-pixelup--pink.svg" /><br />
+					<strong>PIXEL UP! 2017 </strong>
 			</div>
 			<div class="container">
 				<h1 class="heading--center">Everything look right?</h1>
