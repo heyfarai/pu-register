@@ -35,3 +35,14 @@
     padding: 1.2rem 2.5rem;
     border-radius: 4px;
 }
+.block-wrapper {
+    border: 1px solid #eaeff2;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff;
+    padding: 0 3rem 6rem 3rem;
+}
+.block-wrapper--form {
+    margin-bottom: 6rem
+}

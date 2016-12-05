@@ -76,8 +76,12 @@
 			. "&email=" . $fullData['buyerEmail']
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
-
-	saveTicketOrder($fullData);
+	if($_POST['EARLY_BIRD_2DAY']=='0' && $_POST['EARLY_BIRD_3DAY']=='0'){
+		header("Location: /?err=5&$backURL");
+		die();
+	} else {
+		saveTicketOrder($fullData);
+	}
 
 	/*
 	 * Set the session vars once we have cleaned the inputs
@@ -120,9 +124,10 @@
 					<strong>PIXEL UP! 2017 </strong>
 			</div>
 			<div class="container">
-				<h1 class="heading--center">Everything look right?</h1>
+				<h1 class="heading--center">Have a quick check</h1>
 
-				<h6 class="small-title">YOUR TICKETS</h6>
+				<div class="block-wrapper block-wrapper--form">
+				<h6 class="small-title"><br />YOUR TICKETS</h6>
 				<ul class="no-bullet">
 					<?php if((isset($_POST['EARLY_BIRD_3DAY']) && $_POST['EARLY_BIRD_3DAY'] > 0)) : ?>
                     <li class="ticket ticket--flex">
@@ -214,6 +219,7 @@ HTML;
 				</form>
 			</div>
 		</div>
+	</div>
 		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="/js/garlic.js"></script>
 	</body>
