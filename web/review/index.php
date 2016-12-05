@@ -108,24 +108,11 @@
 	 */
 	$returnData = $PayWeb3->doInitiate();
 
+
+	// INCLUDE THE HTML HEADER
+	$pageTitle = "Review your tickets";
+	include_once('../../lib/php/header.inc.php');
 ?>
-<!doctype html>
-<!--
- ___ _         _   _   _      _
-| _ (_)_ _____| | | | | |_ __| |
-|  _/ \ \ / -_) | | |_| | '_ \_|
-|_| |_/_\_\___|_|  \___/| .__(_)
-                        |_|
--->
-<html lang="en">
-    <base href="/">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Review you tickets — PIXEL UP!</title>
-		<link rel="stylesheet" href="/css/pixelup.css">
-	</head>
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
 			<div class="top-bar--squeeze">

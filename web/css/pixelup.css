@@ -22,3 +22,16 @@
 .form-control {
     width: 100%
 }
+.help-block {
+    display: block;
+    margin-top: -1.25rem;
+    font-size: 1.4rem;
+    color: rgb(185, 74, 72);
+}
+.global-form-error {
+    border: 1px solid rgb(185, 74, 72);
+    color: rgb(185, 74, 72);
+    font-weight: bold;
+    padding: 1.2rem 2.5rem;
+    border-radius: 4px;
+}
