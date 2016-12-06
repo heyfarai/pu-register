@@ -79,18 +79,18 @@
 				endif;
 			} else {
 				// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-				header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL']);
+				header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/error/");
 				die();
 
 			}
 		} else {
 			$is_incomplete_post_error = true;
-			header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL']);
+			header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/error/");
 			die();
 		}
 	} else {
 		// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-		header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL']);
+		header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/error/");
 		die();
 	}
 
