@@ -6,11 +6,12 @@
     );
 
     define ("ENKI", "secret");
-    define ("PAYGATE_ID", 10011072130);
+    define ("LIVE_PAYMENTS", false);
+    define ("PAYGATE_ID", (LIVE_PAYMENTS==true) ? 10011072130 : 56991029353);
 
     define ("EARLY_BIRD", true);
 
-    define ("EARLY_BIRD_2DAY_PRICE", 5850);
+    define ("EARLY_BIRD_2DAY_PRICE", 2);
     define ("EARLY_BIRD_3DAY_PRICE", 7650);
     define ("FULL_2DAY_PRICE", 6500);
     define ("FULL_3DAY_PRICE", 8500);
