@@ -10,8 +10,10 @@
 
     define ("EARLY_BIRD", true);
 
-    define ("EARLY_BIRD_2DAY_PRICE", 6500);
-    define ("EARLY_BIRD_3DAY_PRICE", 8500);
+    define ("EARLY_BIRD_2DAY_PRICE", 5850);
+    define ("EARLY_BIRD_3DAY_PRICE", 7650);
+    define ("FULL_2DAY_PRICE", 6500);
+    define ("FULL_3DAY_PRICE", 8500);
 
     define ("PHP_ENV", ((in_array($_SERVER['REMOTE_ADDR'], $whitelist)) ? 'DEV' : 'LIVE'));
     $HOST_URLS = array(

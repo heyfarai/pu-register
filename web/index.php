@@ -69,65 +69,107 @@
 				<div class="block-wrapper block-wrapper--form">
 					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
 						<div id="extraFieldsDiv" class="well well-sm">
+							<br />
+							<h6 class="small-title">EARLY BIRD TICKETS</h6>
 	                        <ul class="no-bullet">
-									<li><br /><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-	                                            3 Day Pass
-	                                        </label>
-	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
-	                                            <span>
-	                                              R 8,500
-	                                            </span>
-	                                        </div>
-	                                        <div class="ticket__quantity ">
-	                                            <span>×</span>
-	                                            <input 	value="<?php echo $e3d ?>"
-														data-validation-optional-if-answered="EARLY_BIRD_2DAY"
-														data-validation-error-msg="Choose a ticket that works for you."
-			 											data-validation-error-msg-container="#ticket-error-msg-container"
-														autocomplete="off"
-														class="ticket__quantity__field"
-														id="EARLY_BIRD_3DAY"
-														name="EARLY_BIRD_3DAY"
-														pattern="\d*"
-														placeholder="0"
-														type="text" >
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-	                                            2 Day Pass
-	                                        </label>
-	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
-	                                            <span>
-	                                              R 6,500
-	                                            </span>
-	                                        </div>
-	                                        <div class="ticket__quantity ">
-	                                            <span>×</span>
-	                                            <input 	value="<?php echo $e2d ?>"
-														data-validation-optional-if-answered="EARLY_BIRD_3DAY"
-														data-validation-error-msg="Choose a ticket that works for you."
-			 											data-validation-error-msg-container="#ticket-error-msg-container"
-														autocomplete="off"
-														class="ticket__quantity__field"
-														id="EARLY_BIRD_2DAY"
-														name="EARLY_BIRD_2DAY"
-														pattern="\d*" placeholder="0" type="text">
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                            </ul>
+								<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
+                                <li class="ticket">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            3 Day Pass
+                                        </label>
+                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              R 7,650
+                                            </span>
+                                        </div>
+                                        <div class="ticket__quantity ">
+                                            <span>×</span>
+                                            <input 	value="<?php echo $e3d ?>"
+													data-validation-optional-if-answered="EARLY_BIRD_2DAY"
+													data-validation-error-msg="Choose a ticket that works for you."
+		 											data-validation-error-msg-container="#ticket-error-msg-container"
+													autocomplete="off"
+													class="ticket__quantity__field"
+													id="EARLY_BIRD_3DAY"
+													name="EARLY_BIRD_3DAY"
+													pattern="\d*"
+													placeholder="0"
+													type="text" >
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ticket">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            2 Day Pass
+                                        </label>
+                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              R 5,850
+                                            </span>
+                                        </div>
+                                        <div class="ticket__quantity ">
+                                            <span>×</span>
+                                            <input 	value="<?php echo $e2d ?>"
+													data-validation-optional-if-answered="EARLY_BIRD_3DAY"
+													data-validation-error-msg="Choose a ticket that works for you."
+		 											data-validation-error-msg-container="#ticket-error-msg-container"
+													autocomplete="off"
+													class="ticket__quantity__field"
+													id="EARLY_BIRD_2DAY"
+													name="EARLY_BIRD_2DAY"
+													pattern="\d*" placeholder="0" type="text">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+							<h6 class="small-title">STANDARD TICKETS</h6>
+	                        <ul class="no-bullet">
+								<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
+                                <li class="ticket">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            3 Day Pass
+                                        </label>
+                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              R 8,500 (from Jan 1, 2017)
+                                            </span>
+                                        </div>
+                                        <div class="ticket__quantity ">
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ticket">
+                                    <div class="ticket__description-wrapper">
+                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                            2 Day Pass
+                                        </label>
+                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+                                    </div>
+                                    <div class="ticket__detail">
+                                        <div class="ticket__price ticket__detail__item">
+                                            <span>
+                                              R 6,500 (from Jan 1, 2017)
+                                            </span>
+                                        </div>
+                                        <div class="ticket__quantity ">
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
 	                            <h6 class="small-title">ABOUT YOU</h6>
 								<ul class="no-bullet">
 									<li class="one-third column">
