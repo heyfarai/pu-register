@@ -83,7 +83,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              R 7,650
+                                              R 7,650 (Save 10%)
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -112,7 +112,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              R 5,850
+                                              R 5,850 (Save 10%)
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
