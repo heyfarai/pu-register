@@ -83,7 +83,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              R 7,650 (Save 10%)
+                                              <strong>R 7,650</strong> (Save 10%)
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -112,7 +112,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              R 5,850 (Save 10%)
+                                              <strong>R 5,850</strong> (Save 10%)
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -143,7 +143,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              R 8,500 (from Jan 1, 2017)
+                                              <strong>R 8,500</strong> (from Jan 1, 2017)
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -161,7 +161,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              R 6,500 (from Jan 1, 2017)
+                                            	<strong>R 6,500</strong> (from Jan 1, 2017)
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">

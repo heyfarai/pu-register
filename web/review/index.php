@@ -47,7 +47,7 @@
 	$optionalFields = array(
 		'PAY_METHOD'        => (isset($_POST['PAY_METHOD']) ? filter_var($_POST['PAY_METHOD'], FILTER_SANITIZE_STRING) : ''),
 		'PAY_METHOD_DETAIL' => (isset($_POST['PAY_METHOD_DETAIL']) ? filter_var($_POST['PAY_METHOD_DETAIL'], FILTER_SANITIZE_STRING) : ''),
-		'NOTIFY_URL'        => '',
+		'NOTIFY_URL'        => $HOST_URLS['LIVE']['TICKETS_HOST_URL'] . "/api/order/$orderId/notifyUpdate",
 		'USER1'             => $orderId,
 		'USER2'             => (isset($_POST['USER2']) ? filter_var($_POST['USER2'], FILTER_SANITIZE_URL) : ''),
 		'USER3'             => (isset($_POST['USER3']) ? filter_var($_POST['USER3'], FILTER_SANITIZE_URL) : ''),
@@ -68,6 +68,7 @@
 	);
 
 	$data = array_merge($mandatoryFields, $optionalFields);
+	echo($data['NOTIFY_URL']);
 	$fullData = array_merge($data, $ticketFields);
 	$backURL = "e2d=" . $fullData['earlyBird_2day']
 			. "&e3d=" . $fullData['earlyBird_3day']

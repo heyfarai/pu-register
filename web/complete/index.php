@@ -72,8 +72,10 @@
 					die();
 
 				else:
+					// TRANSACTION ERROR
 					$backURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS'];
-					header("Location: $backURL");
+					echo($order);
+					//header("Location: $backURL");
 					die();
 				endif;
 			} else {
