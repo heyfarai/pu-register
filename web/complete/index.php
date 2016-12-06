@@ -38,7 +38,7 @@
 				'CHECKSUM'           => $_POST['CHECKSUM']
 			);
 
-			$order = json_decode(getOrder($_GET['t']), true)['order'];
+			$order = json_decode(getOrder($_GET['t'], $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL']), true)['order'];
 			$backURL = "e2d=" . (isset($order['earlyBird_2day']) ? $order['earlyBird_2day'] : "")
 					. "&e3d=" . (isset($order['earlyBird_3day']) ? $order['earlyBird_3day'] : "")
 					. "&name=" . (isset($order['buyerName']) ? $order['buyerName'] : "")
@@ -61,18 +61,18 @@
 			if($is_valid_transaction){
 				if($data['TRANSACTION_STATUS']==1):
 					// <!--	TRANSACTION: APPROVED	 -->
-					$successURL = $_GET['t'] . "/"
+					$successURL = $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL']
+								. '/register-tickets/'
+								. $_GET['t'] . "/"
 								. $data['PAY_REQUEST_ID'] . "/"
 								. $data['PAYGATE_ID'] . "/"
 								. $data['CHECKSUM'] . "/" ;
 
-					header("Location: https://localhost:3001/register-tickets/$successURL");
+					header("Location: $successURL");
 					die();
 
-					// echo "<h1>I'll send to KeystoneJS</h1>";
-					// echo "<a href='https://localhost:3001/register-tickets/$successURL'>https://localhost:3001/register-tickets/$successURL</a>";
 				else:
-					$backURL = "http://localhost:8888/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS'];
+					$backURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS'];
 					header("Location: $backURL");
 					die();
 				endif;

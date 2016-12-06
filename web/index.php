@@ -44,7 +44,7 @@
 	}
 
 	// INCLUDE THE HTML HEADER
-	$pageTitle = "Review your tickets";
+	$pageTitle = "Get your tickets ";
 	include_once('../lib/php/header.inc.php');
 ?>
 	<body>
@@ -68,14 +68,6 @@
 			<?php endif ?>
 				<div class="block-wrapper block-wrapper--form">
 					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
-	                    <input type="hidden" name="PAYGATE_ID" id="PAYGATE_ID" class="form-control" value="10011072130" />
-	                    <input type="hidden" name="CURRENCY" id="CURRENCY" class="form-control" value="ZAR" />
-	                    <input type="hidden" name="RETURN_URL" id="RETURN_URL" class="form-control" value="<?php echo $fullPath['protocol'] . $fullPath['host'] . '/complete/'; ?>" />
-	                    <input type="hidden" name="TRANSACTION_DATE" id="TRANSACTION_DATE" class="form-control" value="<?php echo getDateTime('Y-m-d H:i:s'); ?>" />
-	                    <input type="hidden" name="LOCALE" id="LOCALE" class="form-control" value="en-za" />
-	                    <input type="hidden" name="NOTIFY_URL" id="NOTIFY_URL" class="form-control" placeholder="optional" value="" />
-	                    <input type="hidden" name="REFERENCE" id="REFERENCE" class="form-control" value="<?php echo generateReference(); ?>" />
-
 						<div id="extraFieldsDiv" class="well well-sm">
 	                        <ul class="no-bullet">
 									<li><br /><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
@@ -94,7 +86,7 @@
 	                                        </div>
 	                                        <div class="ticket__quantity ">
 	                                            <span>×</span>
-	                                            <input 	value="<?php echo $e2d ?>"
+	                                            <input 	value="<?php echo $e3d ?>"
 														data-validation-optional-if-answered="EARLY_BIRD_2DAY"
 														data-validation-error-msg="Choose a ticket that works for you."
 			 											data-validation-error-msg-container="#ticket-error-msg-container"
@@ -123,7 +115,7 @@
 	                                        </div>
 	                                        <div class="ticket__quantity ">
 	                                            <span>×</span>
-	                                            <input 	value="<?php echo $e3d ?>"
+	                                            <input 	value="<?php echo $e2d ?>"
 														data-validation-optional-if-answered="EARLY_BIRD_3DAY"
 														data-validation-error-msg="Choose a ticket that works for you."
 			 											data-validation-error-msg-container="#ticket-error-msg-container"
@@ -178,7 +170,7 @@
 						<br>
 						<div class="form-group">
 							<div class=" col-sm-offset-4 col-sm-4">
-								<input type="submit" name="btnSubmit" class="btn btn-primary btn-block btn-form" value="Continue" />
+								<input type="submit" name="btnSubmit" class="button button-primary btn-form" value="Continue" />
 							</div>
 						</div>
 						<br>

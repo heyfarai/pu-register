@@ -29,16 +29,17 @@
 	}
 
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
+	// WHERE SHOULD PAYGET SEND US BACK TO?
+	$paygateReturnURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . '/complete/?t=' . $orderId;
 
 	$mandatoryFields = array(
-		'PAYGATE_ID'        => filter_var($_POST['PAYGATE_ID'], FILTER_SANITIZE_STRING),
-		'REFERENCE'         => filter_var($_POST['REFERENCE'], FILTER_SANITIZE_STRING),
-		// 'AMOUNT'            => filter_var($_POST['AMOUNT'], FILTER_SANITIZE_NUMBER_INT),
+		'PAYGATE_ID'        => PAYGATE_ID,
+		'REFERENCE'         => generateReference(),
 		'AMOUNT'            => filter_var($total_amount*100, FILTER_SANITIZE_NUMBER_INT),
-		'CURRENCY'          => filter_var($_POST['CURRENCY'], FILTER_SANITIZE_STRING),
-		'RETURN_URL'        => $fullPath['protocol'] . $fullPath['host'] . '/complete/?t=' . $orderId,
-		'TRANSACTION_DATE'  => filter_var($_POST['TRANSACTION_DATE'], FILTER_SANITIZE_STRING),
-		'LOCALE'            => filter_var($_POST['LOCALE'], FILTER_SANITIZE_STRING),
+		'CURRENCY'          => "ZAR",
+		'RETURN_URL'        => $paygateReturnURL,
+		'TRANSACTION_DATE'  => getDateTime('Y-m-d H:i:s'),
+		'LOCALE'            => 'en-za',
 		'COUNTRY'           => filter_var($_POST['COUNTRY'], FILTER_SANITIZE_STRING),
 		'EMAIL'             => filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL)
 	);
@@ -46,7 +47,7 @@
 	$optionalFields = array(
 		'PAY_METHOD'        => (isset($_POST['PAY_METHOD']) ? filter_var($_POST['PAY_METHOD'], FILTER_SANITIZE_STRING) : ''),
 		'PAY_METHOD_DETAIL' => (isset($_POST['PAY_METHOD_DETAIL']) ? filter_var($_POST['PAY_METHOD_DETAIL'], FILTER_SANITIZE_STRING) : ''),
-		'NOTIFY_URL'        => (isset($_POST['NOTIFY_URL']) ? filter_var($_POST['NOTIFY_URL'], FILTER_SANITIZE_URL) : ''),
+		'NOTIFY_URL'        => '',
 		'USER1'             => $orderId,
 		'USER2'             => (isset($_POST['USER2']) ? filter_var($_POST['USER2'], FILTER_SANITIZE_URL) : ''),
 		'USER3'             => (isset($_POST['USER3']) ? filter_var($_POST['USER3'], FILTER_SANITIZE_URL) : ''),
@@ -76,11 +77,11 @@
 			. "&email=" . $fullData['buyerEmail']
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
-	if($_POST['EARLY_BIRD_2DAY']=='0' && $_POST['EARLY_BIRD_3DAY']=='0'){
+	if($_POST['EARLY_BIRD_2DAY']=='' && $_POST['EARLY_BIRD_3DAY']==''){
 		header("Location: /?err=5&$backURL");
 		die();
 	} else {
-		saveTicketOrder($fullData);
+		saveTicketOrder($fullData, $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL']);
 	}
 
 	/*
@@ -180,7 +181,7 @@
 					<div class="form-group">
 						<div class=" col-sm-offset-4 col-sm-4">
 							<a href="/?<?php echo $backURL ?>">Cancel payment. Back to tickets</a>
-							<button class="btn btn-success btn-block btn-form" type="submit" name="btnSubmit">PAY with credit card</button>
+							<button class="button button-primary btn-form" type="submit" name="btnSubmit">PAY with credit card</button>
 						</div>
 					</div>
 

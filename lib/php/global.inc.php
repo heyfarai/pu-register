@@ -5,14 +5,15 @@
 	 * @return array
 	 */
 
-	function getOrder($orderId){
+	 function getOrder($orderId, $host){
  		// Get cURL resource
  		$curl = curl_init();
  		// Set some options - we are passing in a useragent too here
  		curl_setopt_array($curl, array(
  		    CURLOPT_RETURNTRANSFER => 1,
- 		    CURLOPT_URL => 'http://localhost:3000/api/order/' . $orderId
+ 		    CURLOPT_URL => "$host/api/order/" . $orderId
  		));
+
  		// Send the request & save response to $resp
  		$res = curl_exec($curl);
  		// Close request to clear up some resources
@@ -21,11 +22,9 @@
  		return $res;
  	}
 
-	function saveTicketOrder($postData) {
-
+	function saveTicketOrder($postData, $host) {
 		$fields_string = "";
-		// $url = "https://hooks.zapier.com/hooks/catch/1239813/tixu5e/";
-		$url = "http://localhost:3000/api/order/create";
+		$url = "$host/api/order/create";
 
 		//url-ify the data for the POST
 		foreach($postData as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
