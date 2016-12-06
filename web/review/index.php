@@ -31,7 +31,7 @@
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
 	$paygateReturnURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . '/complete/?t=' . $orderId;
-	echo(PAYGATE_ID);
+	
 	$mandatoryFields = array(
 		'PAYGATE_ID'        => PAYGATE_ID,
 		'REFERENCE'         => generateReference(),
