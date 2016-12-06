@@ -16,12 +16,12 @@
 
 	function getErrorCode($errCode){
 		$errMsgs = array(
-			"E0" => "The card payment was not completed. Please try again if you want to buy tickets.",
-			"E1" => "The card payment was successful.",
-			"E2" => "The card payment was declined.",
+			"E0" => "The card payment was not completed. Please try again if you want to buy tickets",
+			"E1" => "The card payment was successful",
+			"E2" => "The card payment was declined",
 			"E3" => "The card payment was cancelled. Please try again if you want to buy tickets.",
 			"E4" => "The card payment was cancelled. Please try again if you want to buy tickets.",
-			"E5" => "Please choose at least 1 ticket."
+			"E5" => "Please choose at least 1 ticket"
 		);
 
 		return $errMsgs["E" . $errCode];
@@ -41,6 +41,9 @@
 
 	if($isError){
 		$errMsg = getErrorCode($_GET['err']);
+		if(isset($_GET['errDesc'])) {
+			$errMsg = $errMsg . ' : ' . $_GET['errDesc'];
+		}
 	}
 
 	// INCLUDE THE HTML HEADER
