@@ -68,7 +68,6 @@
 	);
 
 	$data = array_merge($mandatoryFields, $optionalFields);
-	echo($data['NOTIFY_URL']);
 	$fullData = array_merge($data, $ticketFields);
 	$backURL = "e2d=" . $fullData['earlyBird_2day']
 			. "&e3d=" . $fullData['earlyBird_3day']
