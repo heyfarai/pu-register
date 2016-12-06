@@ -79,15 +79,19 @@
 				endif;
 			} else {
 				// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-				echo "<h2>Throw a Something went wrong</h2>";
+				header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL']);
+				die();
 
 			}
 		} else {
 			$is_incomplete_post_error = true;
+			header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL']);
+			die();
 		}
 	} else {
 		// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-		echo "<h2>Throw a 404</h2>";
+		header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL']);
+		die();
 	}
 
 ?>
