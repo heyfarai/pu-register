@@ -84,7 +84,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              <strong>R 7,650</strong> (Save 10%)
+                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10%)</span>
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -113,7 +113,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              <strong>R 5,850</strong> (Save 10%)
+                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10%)</span>
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -144,7 +144,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              <strong>R 8,500</strong> (from Jan 1, 2017)
+                                              <strong>R 8,500</strong> <span class="caption--ticket">(from Jan 1, 2017)</span>
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
@@ -162,7 +162,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                            	<strong>R 6,500</strong> (from Jan 1, 2017)
+                                            	<strong>R 6,500</strong> <span class="caption--ticket">(from Jan 1, 2017)</span>
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">

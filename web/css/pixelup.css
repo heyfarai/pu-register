@@ -61,3 +61,7 @@ body {
         width: 100%
     }
 }
+.caption--ticket{
+    color: #adadad;
+    font-size: 1.3rem;
+}
