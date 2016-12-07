@@ -52,10 +52,8 @@
 ?>
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
-			<div class="top-bar--squeeze">
-				<img class="logo-mark" src="/img/logo-mark-pixelup--pink.svg" /><br />
-					<strong>PIXEL UP! 2017 </strong>
-			</div>
+			<?php include_once('../lib/php/top-bar.inc.php'); ?>
+
 			<div class="container">
 				<h1 class="heading--center">
 					Get your tickets
@@ -214,12 +212,13 @@
 						<br>
 						<br>
 						<div class="form-group">
-							<div class=" col-sm-offset-4 col-sm-4">
-								<input type="submit" name="btnSubmit" class="button button-primary btn-form" value="Continue" />
+							<div class="button-wrapper">
+								<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Continue" />
 							</div>
 						</div>
 						<br>
 					</form>
+					<?php include_once('../lib/php/payments-footer.inc.php'); ?>
 				</div>
 			</div>
 		</div>

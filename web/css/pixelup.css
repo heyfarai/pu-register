@@ -18,6 +18,9 @@ body {
 .btn-form {
     float: right
 }
+.button-wrapper {
+    clear: both;
+}
 .hidden {
     display: none;
 }
@@ -43,8 +46,18 @@ body {
     -webkit-border-radius: 3px;
     border-radius: 3px;
     background: #fff;
-    padding: 0 3rem 6rem 3rem;
+    padding: 0 3rem 2rem 3rem;
 }
 .block-wrapper--form {
     margin-bottom: 6rem
+}
+.payments-footer {
+    padding-top: 4rem;
+    clear: both;
+    text-align: center;
+}
+@media screen and (max-width: 500px) {
+    .button--block {
+        width: 100%
+    }
 }

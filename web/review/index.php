@@ -31,7 +31,7 @@
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
 	$paygateReturnURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . '/complete/?t=' . $orderId;
-	
+
 	$mandatoryFields = array(
 		'PAYGATE_ID'        => PAYGATE_ID,
 		'REFERENCE'         => generateReference(),
@@ -120,12 +120,9 @@
 ?>
 	<body>
 		<div class="container-fluid" style="min-width: 320px;">
-			<div class="top-bar--squeeze">
-				<img class="logo-mark" src="/img/logo-mark-pixelup--pink.svg" /><br />
-					<strong>PIXEL UP! 2017 </strong>
-			</div>
+			<?php include_once('../../lib/php/top-bar.inc.php'); ?>
 			<div class="container">
-				<h1 class="heading--center">Have a quick check</h1>
+				<h1 class="heading--center">Double check</h1>
 
 				<div class="block-wrapper block-wrapper--form">
 				<h6 class="small-title"><br />YOUR TICKETS</h6>
@@ -177,11 +174,19 @@
                         </div>
                     </li>
                 </ul>
+				<p>
+					We'll email the receipt to <?php echo $ticketFields['buyerName'] ?>
+					<?php if($ticketFields['buyerCompany']!=''){
+							echo '(' . $ticketFields['buyerCompany'] . ')' ;
+						}
+					?>
+					— <?php echo $ticketFields['buyerEmail'] ?>.
+				</p>
 				<form role="form" class="form-horizontal text-left" action="<?php echo $PayWeb3::$process_url ?>" method="post" name="paygate_process_form">
 					<div class="form-group">
-						<div class=" col-sm-offset-4 col-sm-4">
-							<a href="/?<?php echo $backURL ?>">Cancel payment. Back to tickets</a>
-							<button class="button button-primary btn-form" type="submit" name="btnSubmit">PAY with credit card</button>
+						<div class="button-wrapper">
+							<a class="button button--block" href="/?<?php echo $backURL ?>">Back to tickets</a>
+							<button class="button button-primary btn-form button--block" type="submit" name="btnSubmit">PAY with credit card</button>
 						</div>
 					</div>
 
@@ -218,6 +223,7 @@ HTML;
 					<?php } ?>
 					<br>
 				</form>
+				<?php include_once('../../lib/php/payments-footer.inc.php'); ?>
 			</div>
 		</div>
 	</div>
