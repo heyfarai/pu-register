@@ -122,7 +122,7 @@
 		<div class="container-fluid" style="min-width: 320px;">
 			<?php include_once('../../lib/php/top-bar.inc.php'); ?>
 			<div class="container">
-				<h1 class="heading--center">Double check</h1>
+				<h1 class="heading--center">Have a quick check</h1>
 
 				<div class="block-wrapper block-wrapper--form">
 				<h6 class="small-title"><br />YOUR TICKETS</h6>
@@ -137,7 +137,7 @@
                         <div class="ticket__detail">
                             <div class="ticket__price ticket__detail__item">
                                 <span>
-                                  R <?php echo number_format($total_3days) ?>
+                                <span class="caption--ticket">(Saved 10%)</span>  R <?php echo number_format($total_3days) ?>
                                 </span>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                         <div class="ticket__detail">
                             <div class="ticket__price ticket__detail__item">
                                 <span>
-                                  R <?php echo number_format($total_2days) ?>
+                                <span class="caption--ticket">(Saved R 850)</span>  R <?php echo number_format($total_2days) ?> 
                                 </span>
                             </div>
                         </div>
