@@ -13,6 +13,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title><?php echo $pageTitle ?> — PIXEL UP!</title>
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@letspixelup">
+        <meta name="twitter:creator" content="@farai_uxguy">
+        <meta name="twitter:title" content="Get tickets for PIXEL UP! UX &amp; Design Conference in Cape Town">
+        <meta name="twitter:description" content="Africa's premier UX and design conference in Cape Town, South Africa May 8-10, 2017. Talks and workshops on interaction design, interface design and product management.">
+        <meta name="twitter:image" content="https://register.pixelup.co.za/img/social.png">
+
 		<style>
 	        @font-face {
 	            font-family: 'fira-sans';
