@@ -153,7 +153,7 @@
                         <div class="ticket__detail">
                             <div class="ticket__price ticket__detail__item">
                                 <span>
-                                <span class="caption--ticket">(Saved R 850)</span>  R <?php echo number_format($total_2days) ?> 
+                                <span class="caption--ticket">(Saved R 850)</span>  R <?php echo number_format($total_2days) ?>
                                 </span>
                             </div>
                         </div>
