@@ -1,5 +1,5 @@
             <div class="payments-footer">
-                <img width="260" src="/img/payment-option-credit-card.png" />
+                <img width="300" src="/img/payment-option-credit-card.png" />
                 <p>
                     All payments processed by securely by PayGate. <a target="_blank" href="https://pixelup.co.za/terms">Terms and Conditions</a>
                 </p>
