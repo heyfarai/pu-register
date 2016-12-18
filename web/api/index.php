@@ -20,6 +20,6 @@
     header('Content-Type: application/json');
     $msg = array('checked' => true);
 
-    echo (json_encode($msg));
+    echo (json_encode($res));
 
 ?>
