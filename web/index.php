@@ -71,9 +71,6 @@
 			<?php endif ?>
 				<div class="block-wrapper block-wrapper--form">
 					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
-						<?php if(isset($_GET['mic'])) : ?>
-						<input name="czeckmi" value="1" type="hidden"/>
-						<?php endif ?>
 						<div id="extraFieldsDiv" class="well well-sm">
 							<br />
 							<h6 class="small-title">EARLY BIRD TICKETS</h6>

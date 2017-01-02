@@ -24,7 +24,7 @@
 	// how man
 	$total_2days = FULL_2DAY_PRICE * (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
 	$total_3days = FULL_3DAY_PRICE * (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
-	$total_amount = isset($_POST['czeckmi']) ? 2 : $total_2days + $total_3days ;
+	$total_amount = $total_2days + $total_3days;
 
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
