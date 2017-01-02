@@ -38,7 +38,7 @@
 				'CHECKSUM'           => $_POST['CHECKSUM']
 			);
 
-			$order = json_decode(getOrder($_GET['t'], $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL']), true)['order'];
+			$order = json_decode(getOrder($_GET['t'], TICKETS_HOST_URL), true)['order'];
 			$backURL = "e2d=" . (isset($order['earlyBird_2day']) ? $order['earlyBird_2day'] : "")
 					. "&e3d=" . (isset($order['earlyBird_3day']) ? $order['earlyBird_3day'] : "")
 					. "&name=" . (isset($order['buyerName']) ? $order['buyerName'] : "")
@@ -61,7 +61,7 @@
 			if($is_valid_transaction){
 				if($data['TRANSACTION_STATUS']==1):
 					// <!--	TRANSACTION: APPROVED	 -->
-					$successURL = $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL']
+					$successURL = TICKETS_HOST_URL
 								. '/register-tickets/'
 								. $_GET['t'] . "/"
 								. $data['PAY_REQUEST_ID'] . "/"
@@ -73,24 +73,24 @@
 
 				else:
 					// TRANSACTION ERROR
-					$backURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS']  . "&errDesc=" . $order['resultDesc'];
+					$backURL = REGISTER_HOST_URL . "/?" . $backURL . "&err=" . $data['TRANSACTION_STATUS']  . "&errDesc=" . $order['resultDesc'];
 					header("Location: $backURL");
 					die();
 				endif;
 			} else {
 				// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-				header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/error/");
+				header("Location: " . REGISTER_HOST_URL . "/error/");
 				die();
 
 			}
 		} else {
 			$is_incomplete_post_error = true;
-			header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/error/");
+			header("Location: " . REGISTER_HOST_URL . "/error/");
 			die();
 		}
 	} else {
 		// <!--	THIS IS NOT A TRANSACTION. WHY ARE YOU HERE	 -->
-		header("Location: " . $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . "/error/");
+		header("Location: " . REGISTER_HOST_URL . "/error/");
 		die();
 	}
 

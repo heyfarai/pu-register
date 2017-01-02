@@ -1,13 +1,19 @@
 <?php
+    require_once __DIR__ . '../../../vendor/autoload.php';
+    $dotenv = new Dotenv\Dotenv(__DIR__ . '/../../');
+    $dotenv->load();
 
     $whitelist = array(
         '127.0.0.1',
         '::1'
     );
 
-    define ("ENKI", "secret");
-    define ("LIVE_PAYMENTS", false);
-    define ("PAYGATE_ID", (LIVE_PAYMENTS==true) ? 10011072130 : 56991029353);
+    define ('REGISTER_HOST_URL',    getenv('REGISTER_HOST_URL'));
+    define ('TICKETS_HOST_URL',     getenv('TICKETS_HOST_URL'));
+
+    define ("ENKI", getenv('NAMSHUB'));
+
+    define ("PAYGATE_ID", getenv('PAYGATE_ID'));
 
     define ("EARLY_BIRD", true);
 
@@ -16,20 +22,14 @@
     define ("FULL_2DAY_PRICE", 6500);
     define ("FULL_3DAY_PRICE", 8500);
 
-    define ("PHP_ENV", ((in_array($_SERVER['REMOTE_ADDR'], $whitelist)) ? 'DEV' : 'LIVE'));
-    $HOST_URLS = array(
-        'DEV' => array(
-            'REGISTER_HOST_URL' => 'http://localhost:8888',
-            'TICKETS_HOST_URL' => 'http://localhost:3000'
-        ),
-        'STAGING' => array(
-            'REGISTER_HOST_URL' => 'https://quiet-mountain-75195.herokuapp.com',
-            'TICKETS_HOST_URL' => 'https://fathomless-hollows-82487.herokuapp.com'
-        ),
-        'LIVE' => array(
-            'REGISTER_HOST_URL' => 'https://register.pixelup.co.za',
-            'TICKETS_HOST_URL' => 'https://tickets.pixelup.co.za'
-        )
-    )
+    if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+        define ("PHP_ENV", 'DEV');
+    } elseif($_SERVER['SERVER_NAME']=='quiet-mountain-75195.herokuapp.com') {
+        define ("PHP_ENV", 'STAGING');
+    } else {
+        define ("PHP_ENV", 'LIVE');
+    }
+
+
 
 ?>

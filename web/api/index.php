@@ -2,7 +2,7 @@
 
     include_once('../../lib/php/config.inc.php');
 
-    $host = $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL'];
+    $host = TICKETS_HOST_URL;
 
     // Get cURL resource
     $curl = curl_init();

@@ -22,15 +22,13 @@
 	$total_amount = "";
 
 	// how man
-	if(EARLY_BIRD==true){
-		$total_2days = EARLY_BIRD_2DAY_PRICE * $_POST['EARLY_BIRD_2DAY'];
-		$total_3days = EARLY_BIRD_3DAY_PRICE * $_POST['EARLY_BIRD_3DAY'];
-		$total_amount = $total_2days + $total_3days;
-	}
+	$total_2days = FULL_2DAY_PRICE * (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
+	$total_3days = FULL_3DAY_PRICE * (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
+	$total_amount = $total_2days + $total_3days;
 
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
-	$paygateReturnURL = $HOST_URLS[PHP_ENV]['REGISTER_HOST_URL'] . '/complete/?t=' . $orderId;
+	$paygateReturnURL = REGISTER_HOST_URL . '/complete/?t=' . $orderId;
 
 	$mandatoryFields = array(
 		'PAYGATE_ID'        => PAYGATE_ID,
@@ -43,11 +41,11 @@
 		'COUNTRY'           => filter_var($_POST['COUNTRY'], FILTER_SANITIZE_STRING),
 		'EMAIL'             => filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL)
 	);
-
+	var_dump($mandatoryFields);
 	$optionalFields = array(
 		'PAY_METHOD'        => (isset($_POST['PAY_METHOD']) ? filter_var($_POST['PAY_METHOD'], FILTER_SANITIZE_STRING) : ''),
 		'PAY_METHOD_DETAIL' => (isset($_POST['PAY_METHOD_DETAIL']) ? filter_var($_POST['PAY_METHOD_DETAIL'], FILTER_SANITIZE_STRING) : ''),
-		'NOTIFY_URL'        => $HOST_URLS['LIVE']['TICKETS_HOST_URL'] . "/api/order/$orderId/notifyUpdate",
+		'NOTIFY_URL'        => NOTIFY_HOST_URL . "/api/order/$orderId/notifyUpdate",
 		'USER1'             => $orderId,
 		'USER2'             => (isset($_POST['USER2']) ? filter_var($_POST['USER2'], FILTER_SANITIZE_URL) : ''),
 		'USER3'             => (isset($_POST['USER3']) ? filter_var($_POST['USER3'], FILTER_SANITIZE_URL) : ''),
@@ -56,15 +54,15 @@
 	);
 
 	$ticketFields = array(
-		'buyerName'             => (isset($_POST['NAME']) ? filter_var($_POST['NAME'], FILTER_SANITIZE_STRING) : ''),
-		'buyerEmail'             => (isset($_POST['EMAIL']) ? filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL) : ''),
-		'buyerCompany'             => (isset($_POST['COMPANY']) ? filter_var($_POST['COMPANY'], FILTER_SANITIZE_STRING) : ''),
-		'full_2day'          => (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
-		'full_3day'          => (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
-		'earlyBird_2day'          => (isset($_POST['EARLY_BIRD_2DAY']) ? filter_var($_POST['EARLY_BIRD_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
-		'earlyBird_3day'          => (isset($_POST['EARLY_BIRD_3DAY']) ? filter_var($_POST['EARLY_BIRD_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
-		'orderAmount'          => $total_amount,
-		'orderId'          => $orderId
+		'buyerName'         => (isset($_POST['NAME']) ? filter_var($_POST['NAME'], FILTER_SANITIZE_STRING) : ''),
+		'buyerEmail'        => (isset($_POST['EMAIL']) ? filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL) : ''),
+		'buyerCompany'      => (isset($_POST['COMPANY']) ? filter_var($_POST['COMPANY'], FILTER_SANITIZE_STRING) : ''),
+		'full_2day'         => (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'full_3day'         => (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'earlyBird_2day'    => (isset($_POST['EARLY_BIRD_2DAY']) ? filter_var($_POST['EARLY_BIRD_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'earlyBird_3day'    => (isset($_POST['EARLY_BIRD_3DAY']) ? filter_var($_POST['EARLY_BIRD_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'orderAmount'       => $total_amount,
+		'orderId'          	=> $orderId
 	);
 
 	$data = array_merge($mandatoryFields, $optionalFields);
@@ -77,11 +75,11 @@
 			. "&email=" . $fullData['buyerEmail']
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
-	if($_POST['EARLY_BIRD_2DAY']=='' && $_POST['EARLY_BIRD_3DAY']==''){
+	if($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']==''){
 		header("Location: /?err=5&$backURL");
 		die();
 	} else {
-		saveTicketOrder($fullData, $HOST_URLS[PHP_ENV]['TICKETS_HOST_URL']);
+		saveTicketOrder($fullData, TICKETS_HOST_URL);
 	}
 
 	/*
@@ -127,33 +125,33 @@
 				<div class="block-wrapper block-wrapper--form">
 				<h6 class="small-title"><br />YOUR TICKETS</h6>
 				<ul class="no-bullet">
-					<?php if((isset($_POST['EARLY_BIRD_3DAY']) && $_POST['EARLY_BIRD_3DAY'] > 0)) : ?>
+					<?php if((isset($_POST['FULL_3DAY']) && $_POST['FULL_3DAY'] > 0)) : ?>
                     <li class="ticket ticket--flex">
                         <div class="ticket__description-wrapper">
                             <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                <?php echo $_POST['EARLY_BIRD_3DAY'] ?> x 3 Day Pass
+                                <?php echo $_POST['FULL_3DAY'] ?> x 3 Day Pass
                             </label>
                         </div>
                         <div class="ticket__detail">
                             <div class="ticket__price ticket__detail__item">
                                 <span>
-                                <span class="caption--ticket">(Saved 10%)</span>  R <?php echo number_format($total_3days) ?>
+                                R <?php echo number_format($total_3days) ?>
                                 </span>
                             </div>
                         </div>
                     </li>
 					<?php endif ?>
-					<?php if(isset($_POST['EARLY_BIRD_2DAY']) && $_POST['EARLY_BIRD_2DAY'] > 0) : ?>
+					<?php if(isset($_POST['FULL_2DAY']) && $_POST['FULL_2DAY'] > 0) : ?>
                     <li class="ticket ticket--flex">
                         <div class="ticket__description-wrapper">
                             <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                <?php echo $_POST['EARLY_BIRD_2DAY'] ?> x 2 Day Pass
+                                <?php echo $_POST['FULL_2DAY'] ?> x 2 Day Pass
                             </label>
                         </div>
                         <div class="ticket__detail">
                             <div class="ticket__price ticket__detail__item">
                                 <span>
-                                <span class="caption--ticket">(Saved R 850)</span>  R <?php echo number_format($total_2days) ?>
+                                R <?php echo number_format($total_2days) ?>
                                 </span>
                             </div>
                         </div>
