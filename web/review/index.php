@@ -42,7 +42,6 @@
 		'EMAIL'             => filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL)
 	);
 
-	var_dump($mandatoryFields);
 
 	$optionalFields = array(
 		'PAY_METHOD'        => (isset($_POST['PAY_METHOD']) ? filter_var($_POST['PAY_METHOD'], FILTER_SANITIZE_STRING) : ''),
