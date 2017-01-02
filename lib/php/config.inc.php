@@ -22,6 +22,10 @@
             'REGISTER_HOST_URL' => 'http://localhost:8888',
             'TICKETS_HOST_URL' => 'http://localhost:3000'
         ),
+        'STAGING' => array(
+            'REGISTER_HOST_URL' => 'https://quiet-mountain-75195.herokuapp.com',
+            'TICKETS_HOST_URL' => 'https://fathomless-hollows-82487.herokuapp.com'
+        ),
         'LIVE' => array(
             'REGISTER_HOST_URL' => 'https://register.pixelup.co.za',
             'TICKETS_HOST_URL' => 'https://tickets.pixelup.co.za'
