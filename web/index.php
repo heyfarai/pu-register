@@ -71,6 +71,9 @@
 			<?php endif ?>
 				<div class="block-wrapper block-wrapper--form">
 					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
+						<?php if(isset($_GET['mic'])) : ?>
+						<input name="czeckmi" value="1" type="hidden"/>
+						<?php endif ?>
 						<div id="extraFieldsDiv" class="well well-sm">
 							<br />
 							<h6 class="small-title">EARLY BIRD TICKETS</h6>
@@ -120,7 +123,7 @@
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
                                             <span>
-                                              <strong>R 8,500</strong> 
+                                              <strong>R 8,500</strong>
                                             </span>
                                         </div>
                                         <div class="ticket__quantity ">
