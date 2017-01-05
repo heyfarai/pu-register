@@ -142,7 +142,7 @@
                                         <label class="ticket__name" for="ticket-ihqxk9qgdry">
                                             2 Day Pass
                                         </label>
-                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+                                        <div class="ticket__description">2 days of talks</div>
                                     </div>
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
