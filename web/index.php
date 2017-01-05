@@ -70,7 +70,7 @@
 				<br />
 			<?php endif ?>
 				<div class="block-wrapper block-wrapper--form">
-					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
+					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">ww
 						<div id="extraFieldsDiv" class="well well-sm">
 							<br />
 							<h6 class="small-title">EARLY BIRD TICKETS</h6>
@@ -96,7 +96,7 @@
                                         <label class="ticket__name" for="ticket-ihqxk9qgdry">
                                             2 Day Pass
                                         </label>
-                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+                                        <div class="ticket__description">2 days of talks</div>
                                     </div>
                                     <div class="ticket__detail">
                                         <div class="ticket__price ticket__detail__item">
