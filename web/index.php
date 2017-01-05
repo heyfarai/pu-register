@@ -70,7 +70,7 @@
 				<br />
 			<?php endif ?>
 				<div class="block-wrapper block-wrapper--form">
-					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">ww
+					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
 						<div id="extraFieldsDiv" class="well well-sm">
 							<br />
 							<h6 class="small-title">EARLY BIRD TICKETS</h6>
