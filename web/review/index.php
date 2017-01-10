@@ -117,7 +117,7 @@
 	$pageTitle = "Review your tickets";
 	include_once('../../lib/php/header.inc.php');
 ?>
-	<body>
+	<body class="body--tickets">
 		<div class="container-fluid" style="min-width: 320px;">
 			<?php include_once('../../lib/php/top-bar.inc.php'); ?>
 			<div class="container">

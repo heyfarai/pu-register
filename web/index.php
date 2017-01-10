@@ -52,168 +52,169 @@
 	$pageTitle = "Get your tickets ";
 	include_once('../lib/php/header.inc.php');
 ?>
-	<body>
-		<div class="container-fluid" style="min-width: 320px;">
-			<?php include_once('../lib/php/top-bar.inc.php'); ?>
+	<body class="body--tickets">
+		<?php include_once('../lib/php/top-bar.inc.php'); ?>
+		<div class="content-wrapper">
+			<div class="container-fluid" style="min-width: 320px;">
+				<div class="hero--page">
+			      <h1 class="heading--centered">Get your tickets</h1>
+			      <p class="text--centered caption caption--hug">An inspired setting for new perspectives.</p>
+			    </div>
 
-			<div class="container">
-				<h1 class="heading--center">
-					Get your tickets
-				</h1>
-				<?php if($isError):?>
-				<div class="global-form-error">
-					<span>
-						<?php echo ($errMsg); ?>
-					</span>
+					<?php if($isError):?>
+					<div class="global-form-error">
+						<span>
+							<?php echo ($errMsg); ?>
+						</span>
 
-				</div>
-				<br />
-			<?php endif ?>
-				<div class="block-wrapper block-wrapper--form">
-					<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
-						<div id="extraFieldsDiv" class="well well-sm">
-							<br />
-							<h6 class="small-title">EARLY BIRD TICKETS</h6>
-	                        <ul class="no-bullet">
-								<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
-                                <li class="ticket">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            3 Day Pass
-                                        </label>
-                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="ticket">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            2 Day Pass
-                                        </label>
-                                        <div class="ticket__description">2 days of talks</div>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-							<h6 class="small-title">STANDARD TICKETS</h6>
-	                        <ul class="no-bullet">
-								<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
-                                <li class="ticket">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            3 Day Pass
-                                        </label>
-                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                              <strong>R 8,500</strong>
-                                            </span>
-                                        </div>
-                                        <div class="ticket__quantity ">
-                                            <span>×</span>
-                                            <input 	value="<?php echo $f2d ?>"
-													data-validation-optional-if-answered="FULL_3DAY"
-													data-validation-error-msg="Choose a ticket that works for you."
-		 											data-validation-error-msg-container="#ticket-error-msg-container"
-													autocomplete="off"
-													class="ticket__quantity__field"
-													id="FULL_2DAY"
-													name="FULL_2DAY"
-													pattern="\d*" placeholder="0" type="text">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="ticket">
-                                    <div class="ticket__description-wrapper">
-                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-                                            2 Day Pass
-                                        </label>
-                                        <div class="ticket__description">2 days of talks</div>
-                                    </div>
-                                    <div class="ticket__detail">
-                                        <div class="ticket__price ticket__detail__item">
-                                            <span>
-                                            	<strong>R 6,500</strong>
-                                            </span>
-                                        </div>
-                                        <div class="ticket__quantity ">
-                                            <span>×</span>
-                                            <input 	value="<?php echo $f3d ?>"
-													data-validation-optional-if-answered="FULL_2DAY"
-													data-validation-error-msg="Choose a ticket that works for you."
-		 											data-validation-error-msg-container="#ticket-error-msg-container"
-													autocomplete="off"
-													class="ticket__quantity__field"
-													id="FULL_3DAY"
-													name="FULL_3DAY"
-													pattern="\d*" placeholder="0" type="text">
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-	                            <h6 class="small-title">ABOUT YOU</h6>
-								<ul class="no-bullet">
-									<li class="one-third column">
-										<div class="form-group ">
-											<label for="NAME" class="col-sm-3 control-label">Your full name</label>
-											<div class="col-sm-3">
-												<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? We'll use it for your receipts and stuff." required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
+					</div>
+					<br />
+				<?php endif ?>
+					<div class="block-wrapper ">
+						<form data-persist="garlic" id="ticket-form" role="form" class="form-horizontal text-left" action="/review/" method="post" name="paygate_initiate_form">
+							<div id="extraFieldsDiv" class="well well-sm">
+								<br />
+								<h5 class="small-title">EARLY BIRD TICKETS</h5>
+		                        <ul class="no-bullet">
+									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                            3 Day Pass
+	                                        </label>
+	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                            2 Day Pass
+	                                        </label>
+	                                        <div class="ticket__description">2 days of talks</div>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                            </ul>
+								<h5 class="small-title">STANDARD TICKETS</h5>
+		                        <ul class="no-bullet">
+									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                            3 Day Pass
+	                                        </label>
+	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 8,500</strong>
+	                                            </span>
+	                                        </div>
+	                                        <div class="ticket__quantity ">
+	                                            <span>×</span>
+	                                            <input 	value="<?php echo $f2d ?>"
+														data-validation-optional-if-answered="FULL_3DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+			 											data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_2DAY"
+														name="FULL_2DAY"
+														pattern="\d*" placeholder="0" type="text">
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                            2 Day Pass
+	                                        </label>
+	                                        <div class="ticket__description">2 days of talks</div>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                            	<strong>R 6,500</strong>
+	                                            </span>
+	                                        </div>
+	                                        <div class="ticket__quantity ">
+	                                            <span>×</span>
+	                                            <input 	value="<?php echo $f3d ?>"
+														data-validation-optional-if-answered="FULL_2DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+			 											data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_3DAY"
+														name="FULL_3DAY"
+														pattern="\d*" placeholder="0" type="text">
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                            </ul>
+		                            <h5 class="small-title">ABOUT YOU</h5>
+									<ul class="no-bullet">
+										<li class="one-third column">
+											<div class="form-group ">
+												<label for="NAME" class="col-sm-3 control-label">Your full name</label>
+												<div class="col-sm-3">
+													<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? We'll use it for your receipts and stuff." required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
+												</div>
 											</div>
-										</div>
-									</li>
-									<li class="one-third column">
-										<div class="form-group">
-											<label for="EMAIL" class="col-sm-3 control-label">Your email</label>
-											<div class="col-sm-3">
-												<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email to send tickets and invoices." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
+										</li>
+										<li class="one-third column">
+											<div class="form-group">
+												<label for="EMAIL" class="col-sm-3 control-label">Your email</label>
+												<div class="col-sm-3">
+													<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email to send tickets and invoices." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
+												</div>
 											</div>
-										</div>
-									</li>
-									<li class="one-third column">
-										<div class="form-group">
-											<label for="AMOUNT" class="col-sm-3 control-label">Company name</label>
-											<div class="col-sm-3">
-												<input value="<?php echo $company ?>" type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Optional" />
+										</li>
+										<li class="one-third column">
+											<div class="form-group">
+												<label for="AMOUNT" class="col-sm-3 control-label">Company name</label>
+												<div class="col-sm-3">
+													<input value="<?php echo $company ?>" type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Optional" />
+												</div>
 											</div>
-										</div>
-									</li>
-									<li class="hidden">
-										<div class="form-group">
-											<label for="COUNTRY" class="col-sm-3 control-label">Country</label>
-											<div class="col-sm-6">
-												<select value="<?php echo $country ?>" data-validation="required" data-validation-error-msg="What country are you in? This helps us validate payment." name="COUNTRY" id="COUNTRY" class="form-control">
-													<?php echo generateCountrySelectOptions(); ?>
-												</select>
+										</li>
+										<li class="u-hidden">
+											<div class="form-group">
+												<label for="COUNTRY" class="col-sm-3 control-label">Country</label>
+												<div class="col-sm-6">
+													<select value="<?php echo $country ?>" data-validation="required" data-validation-error-msg="What country are you in? This helps us validate payment." name="COUNTRY" id="COUNTRY" class="form-control">
+														<?php echo generateCountrySelectOptions(); ?>
+													</select>
+												</div>
 											</div>
-										</div>
-									</li>
-								</ul>
-						</div>
-						<br>
-						<br>
-						<div class="form-group">
-							<div class="button-wrapper">
-								<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Continue" />
+										</li>
+									</ul>
 							</div>
-						</div>
-						<br>
-					</form>
-					<?php include_once('../lib/php/payments-footer.inc.php'); ?>
-				</div>
+							<br>
+							<br>
+							<div class="form-group">
+								<div class="button-wrapper">
+									<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Continue" />
+								</div>
+							</div>
+							<br>
+						</form>
+						<?php include_once('../lib/php/payments-footer.inc.php'); ?>
+					</div>
 			</div>
 		</div>
 		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>

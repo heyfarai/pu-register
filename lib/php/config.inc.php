@@ -24,6 +24,7 @@
     define ('REGISTER_HOST_URL',    getenv('REGISTER_HOST_URL'));
     define ('TICKETS_HOST_URL',     getenv('TICKETS_HOST_URL'));
     define ('NOTIFY_HOST_URL',     getenv('NOTIFY_HOST_URL'));
+    define ('ASSETS_HOST_URL',     getenv('ASSETS_HOST_URL'));
 
     define ("ENKI", getenv('NAMSHUB'));
 
