@@ -26,6 +26,7 @@
     define ('NOTIFY_HOST_URL',     getenv('NOTIFY_HOST_URL'));
 
     define ("ENKI", getenv('NAMSHUB'));
+    define ("INTERCOM_APP_ID", getenv('INTERCOM_APP_ID'));
 
     define ("PAYGATE_ID", getenv('PAYGATE_ID'));
 
