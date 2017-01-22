@@ -78,7 +78,7 @@
 			. "&phone=" . $fullData['buyerPhone']
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
-	if($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']==''){
+	if(($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']=='') || $total_amount == 0){
 		header("Location: /?err=5&$backURL");
 		die();
 	} else {
