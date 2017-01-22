@@ -209,6 +209,7 @@
 	                                    </div>
 	                                </li>
 	                            </ul>
+							-->
 		                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
 									<ul class="fields-list--2-column no-bullet">
 										<li>
@@ -254,7 +255,7 @@
 											</div>
 										</li>
 									</ul>
-							</div> -->
+							</div>
 							<br>
 							<br>
 							<div class="form-group">
