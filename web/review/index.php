@@ -57,6 +57,7 @@
 	$ticketFields = array(
 		'buyerName'         => (isset($_POST['NAME']) ? filter_var($_POST['NAME'], FILTER_SANITIZE_STRING) : ''),
 		'buyerEmail'        => (isset($_POST['EMAIL']) ? filter_var($_POST['EMAIL'], FILTER_SANITIZE_EMAIL) : ''),
+		'buyerPhone'        => (isset($_POST['PHONE']) ? $_POST['PHONE'] : ''),
 		'buyerCompany'      => (isset($_POST['COMPANY']) ? filter_var($_POST['COMPANY'], FILTER_SANITIZE_STRING) : ''),
 		'full_2day'         => (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'full_3day'         => (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
@@ -74,6 +75,7 @@
 			. "&f3d=" . $fullData['full_3day']
 			. "&name=" . $fullData['buyerName']
 			. "&email=" . $fullData['buyerEmail']
+			. "&phone=" . $fullData['buyerPhone']
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
 	if($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']==''){
@@ -118,16 +120,19 @@
 	include_once('../../lib/php/header.inc.php');
 ?>
 	<body class="body--tickets">
-		<div class="container-fluid" style="min-width: 320px;">
-			<?php include_once('../../lib/php/top-bar.inc.php'); ?>
-			<div class="container">
-				<h1 class="heading--center">Have a quick check</h1>
+		<?php include_once('../../lib/php/top-bar.inc.php'); ?>
+		<div class="content-wrapper">
+			<div class="container-fluid" style="min-width: 320px;">
+				<div class="hero--page">
+				  	<h1 class="heading--centered">Almost done!</h1>
+				  	<p class="text--centered caption caption--hug">Have a quick check of everything.</p>
+				</div>
+				<div class="single">
 
-				<div class="block-wrapper block-wrapper--form">
-				<h6 class="small-title"><br />YOUR TICKETS</h6>
+				<h6 class="small-title small-title--light"><br />YOUR TICKETS</h6>
 				<ul class="no-bullet">
 					<?php if((isset($_POST['FULL_3DAY']) && $_POST['FULL_3DAY'] > 0)) : ?>
-                    <li class="ticket ticket--flex">
+                    <li class="ticket ticket--flex ticket--review">
                         <div class="ticket__description-wrapper">
                             <label class="ticket__name" for="ticket-ihqxk9qgdry">
                                 <?php echo $_POST['FULL_3DAY'] ?> x 3 Day Pass
@@ -143,7 +148,7 @@
                     </li>
 					<?php endif ?>
 					<?php if(isset($_POST['FULL_2DAY']) && $_POST['FULL_2DAY'] > 0) : ?>
-                    <li class="ticket ticket--flex">
+                    <li class="ticket ticket--flex ticket--review">
                         <div class="ticket__description-wrapper">
                             <label class="ticket__name" for="ticket-ihqxk9qgdry">
                                 <?php echo $_POST['FULL_2DAY'] ?> x 2 Day Pass
@@ -158,7 +163,7 @@
                         </div>
                     </li>
 					<?php endif ?>
-                    <li class="ticket ticket--flex">
+                    <li class="ticket ticket--flex ticket--review">
                         <div class="ticket__description-wrapper">
                             <label class="ticket__name" for="ticket-ihqxk9qgdry">
                                 <strong>TOTAL</strong>
@@ -173,7 +178,8 @@
                         </div>
                     </li>
                 </ul>
-				<p>
+				<br/>
+				<p style="font-size: .7rem" >
 					We'll email the receipt to <?php echo $ticketFields['buyerName'] ?>
 					<?php if($ticketFields['buyerCompany']!=''){
 							echo '(' . $ticketFields['buyerCompany'] . ')' ;
@@ -181,12 +187,11 @@
 					?>
 					— <?php echo $ticketFields['buyerEmail'] ?>.
 				</p>
-				<form role="form" class="form-horizontal text-left" action="<?php echo $PayWeb3::$process_url ?>" method="post" name="paygate_process_form">
-					<div class="form-group">
-						<div class="button-wrapper">
-							<a class="button button--block" href="/?<?php echo $backURL ?>">Back to tickets</a>
-							<button class="button button-primary btn-form button--block" type="submit" name="btnSubmit">PAY with credit card</button>
-						</div>
+				<br/>
+				<form role="form" action="<?php echo $PayWeb3::$process_url ?>" method="post" name="paygate_process_form">
+					<div class="button-wrapper">
+						<a style="font-size: .7rem" href="/?<?php echo $backURL ?>">Back to tickets</a>
+						<input type="submit" class="button button-primary btn-form button--block" type="submit" name="btnSubmit" value="Pay with credit card">
 					</div>
 
 					<?php if(isset($PayWeb3->processRequest) || isset($PayWeb3->lastError)){ ?>
@@ -224,8 +229,8 @@ HTML;
 				</form>
 				<?php include_once('../../lib/php/payments-footer.inc.php'); ?>
 			</div>
+			</div>
 		</div>
-	</div>
 		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="/js/garlic.js"></script>
 	</body>
