@@ -108,7 +108,6 @@
 	                            </ul>
 								<h5 class="small-title small-title--light">STANDARD TICKETS</h5>
 		                        <ul class="no-bullet">
-									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
 	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
@@ -163,9 +162,20 @@
 	                                        </div>
 	                                    </div>
 	                                </li>
+									<li>
+										<p class="caption caption--padded caption--lower">
+											For group discounts email us on <a href="mailto:tickets@pixelup.co.za">tickets@pixelup.co.za</a>
+										</p>
+										<p style="display:flex; justify-content: space-between" class="caption caption--hug caption--lower text--dark">
+											<span><strong>5%</strong> 5-10 tickets </span>
+											<span><strong>10%</strong> 11-20 tickets </span>
+											<span><strong>15%</strong> 21+ tickets </span>
+										</br/>
+										</p>
+									</li>
 	                            </ul>
 
-								<h5 class="small-title small-title--light">LAST MINUTE TICKETS</h5>
+								<!-- <h5 class="small-title small-title--light">LAST MINUTE TICKETS</h5>
 		                        <ul class="no-bullet">
 									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
 	                                <li class="ticket">
@@ -244,7 +254,7 @@
 											</div>
 										</li>
 									</ul>
-							</div>
+							</div> -->
 							<br>
 							<br>
 							<div class="form-group">
