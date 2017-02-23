@@ -70,7 +70,7 @@
 
 						</div>
 						<?php endif ?>
-						<form data-persist="garlic" id="ticket-form" role="form" action="/review/" method="post" name="paygate_initiate_form">
+						<form id="ticket-form" role="form" action="/review/" method="post" name="paygate_initiate_form">
 							<div>
 								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
 		                        <ul class="no-bullet">
@@ -271,18 +271,5 @@
 		</div>
 		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.form-validator.min.js"></script>
-		<script type="text/javascript" src="/js/garlic.js"></script>
-		<script type="text/javascript">
-			$( 'form' ).garlic();
-			$.validate({
-				onError : function($form) {
-			      console.log('Validation of form '+$form.attr('id')+' failed!');
-			    },
-			    onSuccess : function($form) {
-			      console.log('The form '+$form.attr('id')+' is valid!');
-			    //   return false; // Will stop the submission of the form
-			    }
-			});
-		</script>
 	</body>
 </html>
