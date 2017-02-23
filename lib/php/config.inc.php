@@ -37,6 +37,7 @@
     define ("EARLY_BIRD_3DAY_PRICE", 7650);
     define ("FULL_2DAY_PRICE", 6500);
     define ("FULL_3DAY_PRICE", 8500);
+    define ("STUDENT_2DAY_PRICE", 3000);
 
 
 

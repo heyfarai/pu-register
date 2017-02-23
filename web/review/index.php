@@ -24,7 +24,8 @@
 	// how man
 	$total_2days = FULL_2DAY_PRICE * (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
 	$total_3days = FULL_3DAY_PRICE * (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
-	$total_amount = $total_2days + $total_3days;
+	$total_students = STUDENT_2DAY_PRICE * (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
+	$total_amount = $total_2days + $total_3days + $total_students;
 
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
@@ -63,6 +64,7 @@
 		'full_3day'         => (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'earlyBird_2day'    => (isset($_POST['EARLY_BIRD_2DAY']) ? filter_var($_POST['EARLY_BIRD_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'earlyBird_3day'    => (isset($_POST['EARLY_BIRD_3DAY']) ? filter_var($_POST['EARLY_BIRD_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'STUDENT_2DAY'    	=> (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'orderAmount'       => $total_amount,
 		'orderId'          	=> $orderId
 	);
@@ -73,17 +75,28 @@
 			. "&e3d=" . $fullData['earlyBird_3day']
 			. "&f2d=" . $fullData['full_2day']
 			. "&f3d=" . $fullData['full_3day']
+			. "&s2d=" . $fullData['STUDENT_2DAY']
 			. "&name=" . $fullData['buyerName']
 			. "&email=" . $fullData['buyerEmail']
 			. "&phone=" . $fullData['buyerPhone']
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
-	if(($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']=='') || $total_amount == 0){
+
+	// check if we need to go back
+	// is this a student?
+	if(isset($_POST['STUDENT_2DAY'])){
+		$backURL = $backURL . "&t=s2d";
+		if($_POST['STUDENT_2DAY']==''){
+			header("Location: /?err=5&$backURL");
+			die();
+		}
+	} elseif(($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']=='') || $total_amount == 0){
 		header("Location: /?err=5&$backURL");
 		die();
 	} else {
 		saveTicketOrder($fullData, TICKETS_HOST_URL);
 	}
+
 
 	/*
 	 * Set the session vars once we have cleaned the inputs
@@ -158,6 +171,22 @@
                             <div class="ticket__price ticket__detail__item">
                                 <span>
                                 R <?php echo number_format($total_2days) ?>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+					<?php endif ?>
+					<?php if(isset($_POST['STUDENT_2DAY']) && $_POST['STUDENT_2DAY'] > 0) : ?>
+                    <li class="ticket ticket--flex ticket--review">
+                        <div class="ticket__description-wrapper">
+                            <label class="ticket__name" for="">
+                                <?php echo $_POST['STUDENT_2DAY'] ?> x 2 Day Student Pass
+                            </label>
+                        </div>
+                        <div class="ticket__detail">
+                            <div class="ticket__price ticket__detail__item">
+                                <span>
+                                R <?php echo number_format($total_students) ?>
                                 </span>
                             </div>
                         </div>

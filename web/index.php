@@ -10,7 +10,7 @@
 	session_name('paygate_payweb3_testing_sample');
 	session_start();
 	session_destroy();
-
+//
 	include_once('../lib/php/global.inc.php');
     include_once('../lib/php/config.inc.php');
 
@@ -39,6 +39,7 @@
 	$e2d = (isset($_GET['e2d']) ? $_GET['e2d'] : "");
 	$f2d = (isset($_GET['f2d']) ? $_GET['f2d'] : "");
 	$f3d = (isset($_GET['f3d']) ? $_GET['f3d'] : "");
+	$s2d = (isset($_GET['s2d']) ? $_GET['s2d'] : "");
 	//
 	// IF THIS IS AN ERROR RETURN
 
@@ -72,6 +73,35 @@
 						<?php endif ?>
 						<form id="ticket-form" role="form" action="/review/" method="post" name="paygate_initiate_form">
 							<div>
+							<?php if(isset($_GET['t']) && $_GET['t']="s2d"): ?>
+								<h5 class="small-title small-title--light">STUDENT TICKETS</h5>
+		                        <ul class="no-bullet">
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name" for="">
+	                                            2 Day Student Pass
+	                                        </label>
+	                                        <div class="ticket__description">2 days talks (Monday and Tuesday)</div>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                              <strong>R <?php echo(number_format(STUDENT_2DAY_PRICE)); ?></strong>
+	                                            </span>
+	                                        </div>
+	                                        <div class="ticket__quantity ">
+	                                            <span>×</span>
+	                                            <input 	value=1
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="STUDENT_2DAY"
+														name="STUDENT_2DAY"
+														pattern="\d*" placeholder="0" type="text" readonly>
+	                                        </div>
+	                                    </div>
+	                                </li>
+								</ul>
+							<?php else: ?>
 								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
 		                        <ul class="no-bullet">
 									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
@@ -174,87 +204,52 @@
 										</p>
 									</li>
 	                            </ul>
-
-								<!-- <h5 class="small-title small-title--light">LAST MINUTE TICKETS</h5>
-		                        <ul class="no-bullet">
-									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-	                                            3 Day Pass
-	                                        </label>
-	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
-	                                            <span>
-	                                              <strong>R 9,350</strong> <span class="caption--ticket">(From 1 May 2017)</span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
-	                                            2 Day Pass
-	                                        </label>
-	                                        <div class="ticket__description">2 days of talks</div>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
-	                                            <span>
-	                                              <strong>R 7,150</strong> <span class="caption--ticket">(From 1 May 2017)</span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                            </ul>
-							-->
-		                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
-									<ul class="fields-list--2-column no-bullet">
-										<li>
-											<div class="form-group ">
-												<label for="NAME" class="control-label">Your full name</label>
-												<div>
-													<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? " required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
-												</div>
+							<?php endif ?>
+	                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
+								<ul class="fields-list--2-column no-bullet">
+									<li>
+										<div class="form-group ">
+											<label for="NAME" class="control-label">Your full name</label>
+											<div>
+												<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? " required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
 											</div>
-										</li>
-										<li>
-											<div class="form-group">
-												<label for="EMAIL" class="control-label">Your email</label>
-												<div>
-													<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email to send you tickets." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
-												</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="EMAIL" class="control-label">Your email</label>
+											<div>
+												<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email to send you tickets." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
 											</div>
-										</li>
-										<li>
-											<div class="form-group">
-												<label for="PHONE" class="control-label">Your phone number</label>
-												<div>
-													<input value="<?php echo $phone ?>" data-validation="required" data-validation="phone" data-validation-error-msg="We'll need a valid phone number, just in case." type="tel" required="required"  name="PHONE" id="PHONE" class="form-control" placeholder="+27786753044" />
-												</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="PHONE" class="control-label">Your phone number</label>
+											<div>
+												<input value="<?php echo $phone ?>" data-validation="required" data-validation="phone" data-validation-error-msg="We'll need a valid phone number, just in case." type="tel" required="required"  name="PHONE" id="PHONE" class="form-control" placeholder="+27786753044" />
 											</div>
-										</li>
-										<li>
-											<div class="form-group">
-												<label for="AMOUNT" class="control-label">Company name</label>
-												<div>
-													<input value="<?php echo $company ?>" type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Optional" />
-												</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="AMOUNT" class="control-label">Company name</label>
+											<div>
+												<input value="<?php echo $company ?>" type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Optional" />
 											</div>
-										</li>
-										<li class="u-hidden">
-											<div class="form-group">
-												<label for="COUNTRY" class="control-label">Country</label>
-												<div class="col-sm-6">
-													<select value="<?php echo $country ?>" data-validation="required" data-validation-error-msg="What country are you in? This helps us validate payment." name="COUNTRY" id="COUNTRY" class="form-control">
-														<?php echo generateCountrySelectOptions(); ?>
-													</select>
-												</div>
+										</div>
+									</li>
+									<li class="u-hidden">
+										<div class="form-group">
+											<label for="COUNTRY" class="control-label">Country</label>
+											<div class="col-sm-6">
+												<select value="<?php echo $country ?>" data-validation="required" data-validation-error-msg="What country are you in? This helps us validate payment." name="COUNTRY" id="COUNTRY" class="form-control">
+													<?php echo generateCountrySelectOptions(); ?>
+												</select>
 											</div>
-										</li>
-									</ul>
+										</div>
+									</li>
+								</ul>
 							</div>
 							<br>
 							<br>

@@ -2,12 +2,11 @@
 'use strict';
 
 var config = {
-  version: '0.1.1',
+  version: '0.1.2',
   staticCacheItems: [
-    '/img/logo-mark--pixelup.png',
     '/'
   ],
-  cachePathPattern: /^\/(?:(20[0-9]{2}|about|blog|css|img|js)\/(.+)?)?$/,
+  cachePathPattern: /^\/(?:(20[0-9]{2}|about|blog|css|img|js)\/(.+)?)?$/
 };
 
 function cacheName (key, opts) {
