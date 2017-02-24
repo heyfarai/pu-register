@@ -79,7 +79,7 @@
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
 	                                        <label class="ticket__name" for="">
-	                                            2 Day Student Pass
+	                                            2 Day Full Time Student Pass
 	                                        </label>
 	                                        <div class="ticket__description">2 days talks (Monday and Tuesday)</div>
 	                                    </div>
@@ -100,6 +100,12 @@
 	                                        </div>
 	                                    </div>
 	                                </li>
+									<li>
+										<p class="caption caption--padded caption--lower">
+											Full Time Student Discount is only available to college or university students with proof of full-time student status: a copy of ID &amp; class schedule demonstrating full time enrollment.
+											Email proof to: <a href="mailto:claudine@pixelup.co.za">claudine@pixelup.co.za</a>
+										</p>
+									</li>
 								</ul>
 							<?php else: ?>
 								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>

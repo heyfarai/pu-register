@@ -64,7 +64,7 @@
 		'full_3day'         => (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'earlyBird_2day'    => (isset($_POST['EARLY_BIRD_2DAY']) ? filter_var($_POST['EARLY_BIRD_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'earlyBird_3day'    => (isset($_POST['EARLY_BIRD_3DAY']) ? filter_var($_POST['EARLY_BIRD_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
-		'STUDENT_2DAY'    	=> (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'student_2day'    	=> (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'orderAmount'       => $total_amount,
 		'orderId'          	=> $orderId
 	);
@@ -75,7 +75,7 @@
 			. "&e3d=" . $fullData['earlyBird_3day']
 			. "&f2d=" . $fullData['full_2day']
 			. "&f3d=" . $fullData['full_3day']
-			. "&s2d=" . $fullData['STUDENT_2DAY']
+			. "&s2d=" . $fullData['student_2day']
 			. "&name=" . $fullData['buyerName']
 			. "&email=" . $fullData['buyerEmail']
 			. "&phone=" . $fullData['buyerPhone']
@@ -93,9 +93,8 @@
 	} elseif(($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']=='') || $total_amount == 0){
 		header("Location: /?err=5&$backURL");
 		die();
-	} else {
-		saveTicketOrder($fullData, TICKETS_HOST_URL);
 	}
+	saveTicketOrder($fullData, TICKETS_HOST_URL);
 
 
 	/*
