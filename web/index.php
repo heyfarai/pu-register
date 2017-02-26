@@ -103,7 +103,7 @@
 									<li>
 										<p class="caption caption--padded caption--lower">
 											Full Time Student Discount is only available to college or university students with proof of full-time student status: a copy of ID &amp; class schedule demonstrating full time enrollment.
-											Email proof to: <a href="mailto:tickets@pixelup.co.za">tickets@pixelup.co.za</a>
+											Email proof to: <a href="mailto:tickets@pixelup.co.za">tickets@pixelup.co.za</a>. If you buy a ticket and you're not a full-time student, we may refuse to let you in.
 										</p>
 									</li>
 								</ul>
