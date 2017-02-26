@@ -113,13 +113,12 @@
 									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                        <label class="ticket__name">
 	                                            3 Day Pass
 	                                        </label>
-	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
 	                                    </div>
 	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
 	                                            <span>
 	                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
 	                                            </span>
@@ -128,13 +127,12 @@
 	                                </li>
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                        <label class="ticket__name">
 	                                            2 Day Pass
 	                                        </label>
-	                                        <div class="ticket__description">2 days of talks</div>
 	                                    </div>
 	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
 	                                            <span>
 	                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
 	                                            </span>
@@ -146,7 +144,7 @@
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                        <label class="ticket__name">
 	                                            3 Day Pass
 	                                        </label>
 	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
@@ -173,7 +171,7 @@
 	                                </li>
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="ticket-ihqxk9qgdry">
+	                                        <label class="ticket__name">
 	                                            2 Day Pass
 	                                        </label>
 	                                        <div class="ticket__description">2 days of talks</div>
