@@ -64,8 +64,6 @@
 					$successURL = TICKETS_HOST_URL
 								. '/register-tickets/'
 								. $_GET['t'] . "/"
-								. $data['PAY_REQUEST_ID'] . "/"
-								. $data['PAYGATE_ID'] . "/"
 								. $data['CHECKSUM'] . "/" ;
 
 					header("Location: $successURL");
