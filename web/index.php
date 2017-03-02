@@ -68,46 +68,13 @@
 							<span class="">
 								<?php echo ($errMsg); ?>
 							</span>
-
 						</div>
 						<?php endif ?>
 						<form id="ticket-form" role="form" action="/review/" method="post" name="paygate_initiate_form">
+							<?php if(isset($_GET['yg0l0_hcy59'])): ?>
+								<input type="hidden" name="tr1cky" value="<?php ?>" />
+							<?php endif ?>
 							<div>
-							<?php if(isset($_GET['t']) && $_GET['t']="s2d"): ?>
-								<h5 class="small-title small-title--light">STUDENT TICKETS</h5>
-		                        <ul class="no-bullet">
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name" for="">
-	                                            2 Day Full Time Student Pass
-	                                        </label>
-	                                        <div class="ticket__description">2 days talks (Monday and Tuesday)</div>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
-	                                            <span>
-	                                              <strong>R <?php echo(number_format(STUDENT_2DAY_PRICE)); ?></strong>
-	                                            </span>
-	                                        </div>
-	                                        <div class="ticket__quantity ">
-	                                            <span>×</span>
-	                                            <input 	value=1
-														autocomplete="off"
-														class="ticket__quantity__field"
-														id="STUDENT_2DAY"
-														name="STUDENT_2DAY"
-														pattern="\d*" placeholder="0" type="text" readonly>
-	                                        </div>
-	                                    </div>
-	                                </li>
-									<li>
-										<p class="caption caption--padded caption--lower">
-											Full Time Student Discount is only available to college or university students with proof of full-time student status: a copy of ID &amp; class schedule demonstrating full time enrollment.
-											Email proof to: <a href="mailto:tickets@pixelup.co.za">tickets@pixelup.co.za</a>. If you buy a ticket and you're not a full-time student, we may refuse to let you in.
-										</p>
-									</li>
-								</ul>
-							<?php else: ?>
 								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
 		                        <ul class="no-bullet">
 									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
@@ -208,7 +175,6 @@
 										</p>
 									</li>
 	                            </ul>
-							<?php endif ?>
 	                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
 								<ul class="fields-list--2-column no-bullet">
 									<li>
