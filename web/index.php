@@ -75,38 +75,6 @@
 								<input type="hidden" name="tr1cky" value="<?php ?>" />
 							<?php endif ?>
 							<div>
-								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
-		                        <ul class="no-bullet">
-									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name">
-	                                            3 Day Pass
-	                                        </label>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
-	                                            <span>
-	                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name">
-	                                            2 Day Pass
-	                                        </label>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
-	                                            <span>
-	                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                            </ul>
 								<h5 class="small-title small-title--light">STANDARD TICKETS</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
@@ -141,25 +109,13 @@
 	                                        <label class="ticket__name">
 	                                            2 Day Pass
 	                                        </label>
-	                                        <div class="ticket__description">2 days of talks</div>
+	                                        <div class="ticket__description u-hidden">2 days of talks</div>
 	                                    </div>
 	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
+											<div class="ticket__price ticket__price--sold-out ticket__detail__item">
 	                                            <span>
-	                                            	<strong>R 6,500</strong>
+	                                              <strong>R 6,500</strong> <span class="caption--ticket">(SOLD OUT)</span>
 	                                            </span>
-	                                        </div>
-	                                        <div class="ticket__quantity ">
-	                                            <span>×</span>
-	                                            <input 	value="<?php echo $f2d ?>"
-														data-validation-optional-if-answered="FULL_3DAY"
-														data-validation-error-msg="Choose a ticket that works for you."
-			 											data-validation-error-msg-container="#ticket-error-msg-container"
-														autocomplete="off"
-														class="ticket__quantity__field"
-														id="FULL_2DAY"
-														name="FULL_2DAY"
-														pattern="\d*" placeholder="0" type="text">
 	                                        </div>
 	                                    </div>
 	                                </li>
@@ -174,6 +130,50 @@
 										</br/>
 										</p>
 									</li>
+	                            </ul>
+								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
+		                        <ul class="no-bullet">
+									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            3 Day Pass
+	                                        </label>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - SOLD OUT)</span>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            2 Day Pass
+	                                        </label>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - SOLD OUT)</span>
+	                                            </span>
+	                                        </div>
+											<div class="ticket__quantity u-hidden">
+												<span>×</span>
+												<input 	value="<?php echo $f2d ?>"
+														data-validation-optional-if-answered="FULL_3DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+														data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_2DAY"
+														name="FULL_2DAY"
+														pattern="\d*" placeholder="0" type="text">
+											</div>
+	                                    </div>
+	                                </li>
 	                            </ul>
 	                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
 								<ul class="fields-list--2-column no-bullet">
