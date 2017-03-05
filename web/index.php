@@ -74,39 +74,10 @@
 							<?php if(isset($_GET['yg0l0_hcy59'])): ?>
 								<input type="hidden" name="tr1cky" value="<?php ?>" />
 							<?php endif ?>
+							<?php if(isset($_GET['thehookup'])): ?>
+								<input type="hidden" name="thehookup" value="<?php ?>" />
+							<?php endif ?>
 							<div>
-								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
-		                        <ul class="no-bullet">
-									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name">
-	                                            3 Day Pass
-	                                        </label>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
-	                                            <span>
-	                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                                <li class="ticket">
-	                                    <div class="ticket__description-wrapper">
-	                                        <label class="ticket__name">
-	                                            2 Day Pass
-	                                        </label>
-	                                    </div>
-	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
-	                                            <span>
-	                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - <strong>SOLD OUT</strong>)</span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                            </ul>
 								<h5 class="small-title small-title--light">STANDARD TICKETS</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
@@ -136,6 +107,7 @@
 	                                        </div>
 	                                    </div>
 	                                </li>
+									<?php if(isset($_GET['thehookup'])): ?>
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
 	                                        <label class="ticket__name">
@@ -163,6 +135,23 @@
 	                                        </div>
 	                                    </div>
 	                                </li>
+									<?php else: ?>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            2 Day Pass
+	                                        </label>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
+	                                            <span>
+	                                            	<strong>R 6,500</strong>
+													<span class="caption--ticket">(SOLD OUT)</span>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </li>
+									<?php endif ?>
 									<li>
 										<p class="caption caption--padded caption--lower">
 											For group discounts email us on <a href="mailto:tickets@pixelup.co.za">tickets@pixelup.co.za</a>
@@ -174,6 +163,38 @@
 										</br/>
 										</p>
 									</li>
+	                            </ul>
+								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
+		                        <ul class="no-bullet">
+									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            3 Day Pass
+	                                        </label>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 7,650</strong> <span class="caption--ticket">(Save 10% - SOLD OUT)</span>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            2 Day Pass
+	                                        </label>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
+	                                            <span>
+	                                              <strong>R 5,850</strong> <span class="caption--ticket">(Save 10% - SOLD OUT)</span>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </li>
 	                            </ul>
 	                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
 								<ul class="fields-list--2-column no-bullet">

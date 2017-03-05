@@ -82,6 +82,9 @@
 			. "&company=" . $fullData['buyerCompany']
 			. "&country=" . $fullData['buyerName'];
 
+	if(isset($_POST['thehookup'])) {
+		$backURL = $backURL . "&thehookup=1";
+	}
 	// check if we need to go back
 	// is this a student?
 	if(isset($_POST['STUDENT_2DAY'])){
@@ -90,7 +93,7 @@
 			header("Location: /?err=5&$backURL");
 			die();
 		}
-	} elseif(($_POST['FULL_2DAY']=='' && $_POST['FULL_3DAY']=='') || $total_amount == 0){
+	} elseif(($ticketFields['full_2day']=='' && $ticketFields['full_3day']=='') || $total_amount == 0){
 		header("Location: /?err=5&$backURL");
 		die();
 	}
