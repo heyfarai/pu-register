@@ -21,7 +21,8 @@
 			"E2" => "The card payment was declined",
 			"E3" => "The card payment was cancelled. Please try again if you want to buy tickets.",
 			"E4" => "The card payment was cancelled. Please try again if you want to buy tickets.",
-			"E5" => "Please choose at least 1 ticket"
+			"E5" => "Please choose at least 1 ticket",
+			'E6' => "Sorry, we couldn't add you to the list. Please try again."
 		);
 
 		return $errMsgs["E" . $errCode];
@@ -59,8 +60,8 @@
 		<div class="content-wrapper">
 			<div class="container-fluid" style="min-width: 320px;">
 				<div class="hero--page">
-			      <h1 class="heading--centered">Get your tickets</h1>
-			      <p class="text--centered caption caption--hug">Don't miss out.</p>
+			      <h1 class="heading--centered">All sold out</h1>
+			      <p class="text--centered caption caption--hug">No more tickets for 2017</p>
 			    </div>
 				<div class="single">
 						<?php if($isError):?>
@@ -70,6 +71,48 @@
 							</span>
 						</div>
 						<?php endif ?>
+						<?php if(isset($_GET['success'])):?>
+						<div class="global-form-error" style="color: green; border: 1px solid green;">
+							<span class="">
+								We've added you to the Pixel Up! 2017 waiting list.
+							</span>
+						</div>
+						<?php endif ?>
+						<form name="formWaitingList" role="form" method="POST" action="./addToWaitingList.php">
+							<div>
+								<h5 class="small-title small-title--light">Join the WAITING LIST</h5>
+								<ul class="fields-list--2-column no-bullet">
+									<li>
+										<div class="form-group ">
+											<label for="NAME" class="control-label">Your full name</label>
+											<div>
+												<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? " required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="EMAIL" class="control-label">Your email</label>
+											<div>
+												<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email address." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
+											</div>
+										</div>
+									</li>
+								</ul>
+								<span class="caption caption--padded caption--lower">
+									We'll let you know if any tickets become available for 2017.
+								</span>
+								<br />
+								<br />
+								<div class="form-group">
+									<div class="button-wrapper">
+										<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Join the waiting list" />
+									</div>
+								</div>
+								<br>
+							</div>
+						</form>
+						<hr />
 						<form id="ticket-form" role="form" action="/review/" method="post" name="paygate_initiate_form">
 							<?php if(isset($_GET['yg0l0_hcy59'])): ?>
 								<input type="hidden" name="tr1cky" value="<?php ?>" />
@@ -78,33 +121,22 @@
 								<input type="hidden" name="thehookup" value="<?php ?>" />
 							<?php endif ?>
 							<div>
-								<h5 class="small-title small-title--light">STANDARD TICKETS</h5>
+								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
 	                                        <label class="ticket__name">
 	                                            3 Day Pass
 	                                        </label>
-	                                        <div class="ticket__description">2 days talks and 1 full-day workshop</div>
 	                                    </div>
 	                                    <div class="ticket__detail">
-	                                        <div class="ticket__price ticket__detail__item">
+	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
 	                                            <span>
-	                                              <strong>R 8,500</strong>
+	                                            	<strong>R 8,500</strong>
+													<span class="caption--ticket">(SOLD OUT)</span>
 	                                            </span>
 	                                        </div>
-	                                        <div class="ticket__quantity ">
-	                                            <span>×</span>
-	                                            <input 	value="<?php echo $f3d ?>"
-														data-validation-optional-if-answered="FULL_3DAY"
-														data-validation-error-msg="Choose a ticket that works for you."
-			 											data-validation-error-msg-container="#ticket-error-msg-container"
-														autocomplete="off"
-														class="ticket__quantity__field"
-														id="FULL_3DAY"
-														name="FULL_3DAY"
-														pattern="\d*" placeholder="0" type="text">
-	                                        </div>
+
 	                                    </div>
 	                                </li>
 									<?php if(isset($_GET['thehookup'])): ?>
@@ -164,7 +196,7 @@
 										</p>
 									</li>
 	                            </ul>
-								<h5 class="small-title small-title--light">EARLY BIRD TICKETS</h5>
+								<h5 class="small-title small-title--light">EARLY BIRD TICKETS (Sold Out)</h5>
 		                        <ul class="no-bullet">
 									<li><strong><span id="ticket-error-msg-container" class="help-block form-error"></span></strong></li>
 	                                <li class="ticket">
@@ -196,60 +228,7 @@
 	                                    </div>
 	                                </li>
 	                            </ul>
-	                            <h5 class="small-title small-title--light">ABOUT YOU</h5>
-								<ul class="fields-list--2-column no-bullet">
-									<li>
-										<div class="form-group ">
-											<label for="NAME" class="control-label">Your full name</label>
-											<div>
-												<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? " required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="form-group">
-											<label for="EMAIL" class="control-label">Your email</label>
-											<div>
-												<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email to send you tickets." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="form-group">
-											<label for="PHONE" class="control-label">Your phone number</label>
-											<div>
-												<input value="<?php echo $phone ?>" data-validation="required" data-validation="phone" data-validation-error-msg="We'll need a valid phone number, just in case." type="tel" required="required"  name="PHONE" id="PHONE" class="form-control" placeholder="+27786753044" />
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="form-group">
-											<label for="AMOUNT" class="control-label">Company name</label>
-											<div>
-												<input value="<?php echo $company ?>" type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Optional" />
-											</div>
-										</div>
-									</li>
-									<li class="u-hidden">
-										<div class="form-group">
-											<label for="COUNTRY" class="control-label">Country</label>
-											<div class="col-sm-6">
-												<select value="<?php echo $country ?>" data-validation="required" data-validation-error-msg="What country are you in? This helps us validate payment." name="COUNTRY" id="COUNTRY" class="form-control">
-													<?php echo generateCountrySelectOptions(); ?>
-												</select>
-											</div>
-										</div>
-									</li>
-								</ul>
 							</div>
-							<br>
-							<br>
-							<div class="form-group">
-								<div class="button-wrapper">
-									<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Continue" />
-								</div>
-							</div>
-							<br>
 						</form>
 						<?php include_once('../lib/php/payments-footer.inc.php'); ?>
 					</div>

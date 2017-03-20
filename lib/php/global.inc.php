@@ -5,6 +5,50 @@
 	 * @return array
 	 */
 
+	 function addToWaitingList($email, $name){
+		try {
+		    $mandrill = new Mandrill('1o_etmni1FAJ7MVcEdHiDg');
+		    $message = array(
+		        'text' => $name . ' || ' . $email,
+		        'subject' => 'Waiting List',
+		        'from_email' => 'bot@pixelup.co.za',
+		        'from_name' => 'Waiting List',
+		        'to' => array(
+		            array(
+		                'email' => 'waiting-list@pixelup.co.za',
+		                'name' => 'Ticket Bot',
+		                'type' => 'to'
+		            )
+		        )
+		    );
+		    $async = false;
+		    $result = $mandrill->messages->send($message, $async);
+			if($result[0]['status']=='sent'){
+				return true;
+			}
+			// print_r($result);
+		    /*
+		    Array
+		    (
+		        [0] => Array
+		            (
+		                [email] => recipient.email@example.com
+		                [status] => sent
+		                [reject_reason] => hard-bounce
+		                [_id] => abc123abc123abc123abc123abc123
+		            )
+
+		    )
+		    */
+		} catch(Mandrill_Error $e) {
+		    // Mandrill errors are thrown as exceptions
+		    echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+		    // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+		    return false;
+		}
+
+	 }
+
 	 function getOrder($orderId, $host){
  		// Get cURL resource
  		$curl = curl_init();
