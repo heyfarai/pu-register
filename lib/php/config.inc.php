@@ -28,6 +28,7 @@
 
     define ("ENKI", getenv('NAMSHUB'));
     define ("INTERCOM_APP_ID", getenv('INTERCOM_APP_ID'));
+    define ("MANDRILL_KEY", getenv('MANDRILL_KEY'));
 
     define ("PAYGATE_ID", getenv('PAYGATE_ID'));
 

@@ -7,7 +7,7 @@
 
 	 function addToWaitingList($email, $name){
 		try {
-		    $mandrill = new Mandrill('1o_etmni1FAJ7MVcEdHiDg');
+		    $mandrill = new Mandrill(MANDRILL_KEY);
 		    $message = array(
 		        'text' => $name . ' || ' . $email,
 		        'subject' => 'Waiting List',
