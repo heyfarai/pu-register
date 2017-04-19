@@ -60,8 +60,8 @@
 		<div class="content-wrapper">
 			<div class="container-fluid" style="min-width: 320px;">
 				<div class="hero--page">
-			      <h1 class="heading--centered">All sold out</h1>
-			      <p class="text--centered caption caption--hug">No more tickets for 2017</p>
+			      <h1 class="heading--centered">Tickets</h1>
+			      <p class="text--centered caption caption--hug">Livestream only. Conference is sold out</p>
 			    </div>
 				<div class="single">
 						<?php if($isError):?>
@@ -78,41 +78,7 @@
 							</span>
 						</div>
 						<?php endif ?>
-						<form name="formWaitingList" role="form" method="POST" action="./addToWaitingList.php">
-							<div>
-								<h5 class="small-title small-title--light">Join the WAITING LIST</h5>
-								<ul class="fields-list--2-column no-bullet">
-									<li>
-										<div class="form-group ">
-											<label for="NAME" class="control-label">Your full name</label>
-											<div>
-												<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? " required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="form-group">
-											<label for="EMAIL" class="control-label">Your email</label>
-											<div>
-												<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email address." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
-											</div>
-										</div>
-									</li>
-								</ul>
-								<span class="caption caption--padded caption--lower">
-									We'll let you know if any tickets become available for 2017.
-								</span>
-								<br />
-								<br />
-								<div class="form-group">
-									<div class="button-wrapper">
-										<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Join the waiting list" />
-									</div>
-								</div>
-								<br>
-							</div>
-						</form>
-						<hr />
+
 						<form id="ticket-form" role="form" action="/review/" method="post" name="paygate_initiate_form">
 							<?php if(isset($_GET['yg0l0_hcy59'])): ?>
 								<input type="hidden" name="tr1cky" value="<?php ?>" />
@@ -121,6 +87,49 @@
 								<input type="hidden" name="thehookup" value="<?php ?>" />
 							<?php endif ?>
 							<div>
+								<h5 class="small-title small-title--light" >Live Stream</h5>
+
+								<ul class="no-bullet">
+									<li class="ticket" style="border-bottom: none">
+										<div class="ticket__description-wrapper">
+											<label class="ticket__name">
+												Livestream Pass
+											</label>
+											<div class="ticket__description">2 days talks live + Recordings</div>
+										</div>
+										<div class="ticket__detail">
+											<div class="ticket__price ticket__detail__item">
+												<span>
+												  <strong>R 1,050</strong>
+												</span>
+											</div>
+											<div class="ticket__quantity ">
+												<span>×</span>
+												<input 	value="<?php echo $f3d ?>"
+														data-validation-optional-if-answered="FULL_3DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+														data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_3DAY"
+														name="FULL_3DAY"
+														pattern="\d*" placeholder="0" type="text">
+											</div>
+										</div>
+									</li>
+									<li>
+										<br />
+										<p class="caption caption--lower text--dark">
+											We understand that not everyone has the possibility of traveling to Cape Town, so we are offering Live streaming of all 14 talks on Monday and Tuesday.
+										</p>
+										<ul class="caption text--dark caption--lower">
+											<li>High Definition, 2 Camera streaming in the comfort on your home or office.</li>
+											<li>Recordings which are yours to keep for life.</li>
+											<li>Access to the conference Slack channel.</li>
+										</ul>
+									</li>
+								</ul>
+								<hr />
 								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
