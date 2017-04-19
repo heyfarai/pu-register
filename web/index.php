@@ -129,6 +129,51 @@
 										</ul>
 									</li>
 								</ul>
+								<h5 class="small-title small-title--light">ABOUT YOU</h5>
+								<ul class="fields-list--2-column no-bullet">
+									<li>
+										<div class="form-group ">
+											<label for="NAME" class="control-label">Your full name</label>
+											<div>
+												<input value="<?php echo $name ?>" data-validation="required" data-validation-error-msg="What is your name? " required="required" type="text" name="NAME" id="NAME" class="form-control" placeholder="What shall we call you?" />
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="EMAIL" class="control-label">Your email</label>
+											<div>
+												<input value="<?php echo $email ?>" data-validation="required" data-validation="email" data-validation-error-msg="We'll need a valid email to send you tickets." type="email" required="required"  name="EMAIL" id="EMAIL" class="form-control" placeholder="We don't spam" />
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="PHONE" class="control-label">Your phone number</label>
+											<div>
+												<input value="<?php echo $phone ?>" data-validation="required" data-validation="phone" data-validation-error-msg="We'll need a valid phone number, just in case." type="tel" required="required"  name="PHONE" id="PHONE" class="form-control" placeholder="+27786753044" />
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+											<label for="AMOUNT" class="control-label">Company name</label>
+											<div>
+												<input value="<?php echo $company ?>" type="text" name="COMPANY" id="COMPANY" class="form-control" placeholder="Optional" />
+											</div>
+										</div>
+									</li>
+									<li class="u-hidden">
+										<div class="form-group">
+											<label for="COUNTRY" class="control-label">Country</label>
+											<div class="col-sm-6">
+												<select value="<?php echo $country ?>" data-validation="required" data-validation-error-msg="What country are you in? This helps us validate payment." name="COUNTRY" id="COUNTRY" class="form-control">
+													<?php echo generateCountrySelectOptions(); ?>
+												</select>
+											</div>
+										</div>
+									</li>
+								</ul>
 								<hr />
 								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
 		                        <ul class="no-bullet">
