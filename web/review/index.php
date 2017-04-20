@@ -28,6 +28,10 @@
 	$total_students = STUDENT_2DAY_PRICE * (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
 	$total_amount = $total_2days + $total_3days + $total_students + $total_live;
 
+	if(TEST_PURCHASE==1){
+		$total_amount = 2;
+	}
+
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
 	$paygateReturnURL = REGISTER_HOST_URL . '/complete/?t=' . $orderId;
