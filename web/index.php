@@ -41,6 +41,7 @@
 	$f2d = (isset($_GET['f2d']) ? $_GET['f2d'] : "");
 	$f3d = (isset($_GET['f3d']) ? $_GET['f3d'] : "");
 	$s2d = (isset($_GET['s2d']) ? $_GET['s2d'] : "");
+	$livestream = (isset($_GET['livestream']) ? $_GET['livestream'] : "");
 	//
 	// IF THIS IS AN ERROR RETURN
 
@@ -86,39 +87,13 @@
 							<?php if(isset($_GET['thehookup'])): ?>
 								<input type="hidden" name="thehookup" value="<?php ?>" />
 							<?php endif ?>
+							<?php if(isset($_GET['live'])): ?>
 							<div>
+								<input type="hidden" name="live" value="1" />
 								<h5 class="small-title small-title--light" >Live Stream</h5>
 
 								<ul class="no-bullet">
-									<li class="ticket" style="border-bottom: none">
-										<div class="ticket__description-wrapper">
-											<label class="ticket__name">
-												Livestream Pass
-											</label>
-											<div class="ticket__description">2 days talks live + Recordings</div>
-										</div>
-										<div class="ticket__detail">
-											<div class="ticket__price ticket__detail__item">
-												<span>
-												  <strong>R 1,050</strong>
-												</span>
-											</div>
-											<div class="ticket__quantity ">
-												<span>×</span>
-												<input 	value="<?php echo $f3d ?>"
-														data-validation-optional-if-answered="FULL_3DAY"
-														data-validation-error-msg="Choose a ticket that works for you."
-														data-validation-error-msg-container="#ticket-error-msg-container"
-														autocomplete="off"
-														class="ticket__quantity__field"
-														id="FULL_3DAY"
-														name="FULL_3DAY"
-														pattern="\d*" placeholder="0" type="text">
-											</div>
-										</div>
-									</li>
 									<li>
-										<br />
 										<p class="caption caption--lower text--dark">
 											We understand that not everyone has the possibility of traveling to Cape Town, so we are offering Live streaming of all 14 talks on Monday and Tuesday.
 										</p>
@@ -127,9 +102,36 @@
 											<li>Recordings which are yours to keep for life.</li>
 											<li>Access to the conference Slack channel.</li>
 										</ul>
+										<br />
 									</li>
-								</ul>
-								<h5 class="small-title small-title--light">ABOUT YOU</h5>
+										<li class="ticket" style="border-bottom: none">
+											<div class="ticket__description-wrapper">
+												<label class="ticket__name">
+													Livestream Pass
+												</label>
+												<div class="ticket__description">2 days talks live + Recordings</div>
+											</div>
+											<div class="ticket__detail">
+												<div class="ticket__price ticket__detail__item">
+													<span>
+													  <strong>R 1,050</strong>
+													</span>
+												</div>
+												<div class="ticket__quantity ">
+													<span>×</span>
+													<input 	value="<?php echo $livestream ?>"
+															data-validation-error-msg="Choose a ticket that works for you."
+															data-validation-error-msg-container="#ticket-error-msg-container"
+															autocomplete="off"
+															class="ticket__quantity__field"
+															id="LIVESTREAM"
+															name="LIVESTREAM"
+															pattern="\d*" placeholder="0" type="text">
+												</div>
+											</div>
+										</li>
+									</ul>
+								<p class="caption" style="margin-top: 1.5rem">TICKET DETAILS</p>
 								<ul class="fields-list--2-column no-bullet">
 									<li>
 										<div class="form-group ">
@@ -174,7 +176,16 @@
 										</div>
 									</li>
 								</ul>
+								<div class="form-group" style="margin: 1rem 0 0">
+									<div class="button-wrapper">
+										<input type="submit" name="btnSubmit" class="button button-primary btn-form button--block" value="Continue" />
+									</div>
+								</div>
+							</div>
+								<br />
 								<hr />
+							<?php endif ?>
+							<div style="clear: both; ">
 								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">

@@ -24,8 +24,9 @@
 	// how man
 	$total_2days = FULL_2DAY_PRICE * (isset($_POST['FULL_2DAY']) ? filter_var($_POST['FULL_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
 	$total_3days = FULL_3DAY_PRICE * (isset($_POST['FULL_3DAY']) ? filter_var($_POST['FULL_3DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
+	$total_live = LIVESTREAM_PRICE * (isset($_POST['LIVESTREAM']) ? filter_var($_POST['LIVESTREAM'], FILTER_SANITIZE_NUMBER_INT) : 0);
 	$total_students = STUDENT_2DAY_PRICE * (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : 0);
-	$total_amount = $total_2days + $total_3days + $total_students;
+	$total_amount = $total_2days + $total_3days + $total_students + $total_live;
 
 	$orderId = md5(getDateTime('Y-m-d H:i:s'));
 	// WHERE SHOULD PAYGET SEND US BACK TO?
@@ -65,6 +66,7 @@
 		'earlyBird_2day'    => (isset($_POST['EARLY_BIRD_2DAY']) ? filter_var($_POST['EARLY_BIRD_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'earlyBird_3day'    => (isset($_POST['EARLY_BIRD_3DAY']) ? filter_var($_POST['EARLY_BIRD_3DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'student_2day'    	=> (isset($_POST['STUDENT_2DAY']) ? filter_var($_POST['STUDENT_2DAY'], FILTER_SANITIZE_NUMBER_INT) : ''),
+		'livestream'    	=> (isset($_POST['LIVESTREAM']) ? filter_var($_POST['LIVESTREAM'], FILTER_SANITIZE_NUMBER_INT) : ''),
 		'orderAmount'       => $total_amount,
 		'orderId'          	=> $orderId
 	);
@@ -76,6 +78,7 @@
 			. "&f2d=" . $fullData['full_2day']
 			. "&f3d=" . $fullData['full_3day']
 			. "&s2d=" . $fullData['student_2day']
+			. "&livestream=" . $fullData['livestream']
 			. "&name=" . $fullData['buyerName']
 			. "&email=" . $fullData['buyerEmail']
 			. "&phone=" . $fullData['buyerPhone']
@@ -85,6 +88,9 @@
 	if(isset($_POST['thehookup'])) {
 		$backURL = $backURL . "&thehookup=1";
 	}
+	if($fullData['livestream']>0) {
+		$backURL = $backURL . "&live";
+	}
 	// check if we need to go back
 	// is this a student?
 	if(isset($_POST['STUDENT_2DAY'])){
@@ -93,7 +99,7 @@
 			header("Location: /?err=5&$backURL");
 			die();
 		}
-	} elseif(($ticketFields['full_2day']=='' && $ticketFields['full_3day']=='') || $total_amount == 0){
+	} elseif(($ticketFields['full_2day']=='' && $ticketFields['full_3day']=='' && $ticketFields['livestream']=='') || $total_amount == 0){
 		header("Location: /?err=5&$backURL");
 		die();
 	}
@@ -146,6 +152,22 @@
 
 				<h6 class="small-title small-title--light"><br />YOUR TICKETS</h6>
 				<ul class="no-bullet">
+					<?php if((isset($_POST['LIVESTREAM']) && $_POST['LIVESTREAM'] > 0)) : ?>
+                    <li class="ticket ticket--flex ticket--review">
+                        <div class="ticket__description-wrapper">
+                            <label class="ticket__name" for="ticket-ihqxk9qgdry">
+                                <?php echo $_POST['LIVESTREAM'] ?> x Livestream Pass
+                            </label>
+                        </div>
+                        <div class="ticket__detail">
+                            <div class="ticket__price ticket__detail__item">
+                                <span>
+                                R <?php echo number_format($total_live) ?>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+					<?php endif ?>
 					<?php if((isset($_POST['FULL_3DAY']) && $_POST['FULL_3DAY'] > 0)) : ?>
                     <li class="ticket ticket--flex ticket--review">
                         <div class="ticket__description-wrapper">
