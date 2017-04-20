@@ -90,24 +90,25 @@
 							<?php if(isset($_GET['live'])): ?>
 							<div>
 								<input type="hidden" name="live" value="1" />
-								<h5 class="small-title small-title--light" >Live Stream</h5>
+								<h5 class="small-title small-title--light" >Get the HD Conference Live Stream</h5>
 
 								<ul class="no-bullet">
 									<li>
 										<p class="caption caption--lower text--dark">
-											We understand that not everyone has the possibility of traveling to Cape Town, so we are offering Live streaming of all 14 talks on Monday and Tuesday.
+											We understand that not everyone can make it to Cape Town, so we are offering Live streaming of all 14 talks on Monday and Tuesday.
+											<br />You'll get:
 										</p>
 										<ul class="caption text--dark caption--lower">
-											<li>High Definition, 2 Camera streaming in the comfort on your home or office.</li>
-											<li>Recordings which are yours to keep for life.</li>
-											<li>Access to the conference Slack channel.</li>
+											<li>High Definition, 2 Camera streaming to your home or office</li>
+											<li>Lifetime access to all 14 recordings</li>
+											<li>Access to the live conference Slack channel</li>
 										</ul>
 										<br />
 									</li>
-										<li class="ticket" style="border-bottom: none">
+										<li class="ticket" style="border-top: 1px solid #e5e5e5">
 											<div class="ticket__description-wrapper">
 												<label class="ticket__name">
-													Livestream Pass
+													Get the Livestream Ticket
 												</label>
 												<div class="ticket__description">2 days talks live + Recordings</div>
 											</div>
@@ -131,7 +132,7 @@
 											</div>
 										</li>
 									</ul>
-								<p class="caption" style="margin-top: 1.5rem">TICKET DETAILS</p>
+									<br />
 								<ul class="fields-list--2-column no-bullet">
 									<li>
 										<div class="form-group ">
