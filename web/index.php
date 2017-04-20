@@ -90,7 +90,7 @@
 							<?php if(TICKETS_LIVESTREAM): ?>
 							<div>
 								<input type="hidden" name="live" value="1" />
-								<h5 class="small-title small-title--light" >Get the HD Conference Live Stream</h5>
+								<h5 class="small-title small-title--light" >Get the Conference Live Stream</h5>
 
 								<ul class="no-bullet">
 									<li>
