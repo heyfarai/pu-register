@@ -53,7 +53,7 @@
 	}
 
 	// INCLUDE THE HTML HEADER
-	$pageTitle = "Get your tickets ";
+	$pageTitle = "Tickets ";
 	include_once('../lib/php/header.inc.php');
 ?>
 	<body class="body--tickets">
@@ -62,7 +62,7 @@
 			<div class="container-fluid" style="min-width: 320px;">
 				<div class="hero--page">
 			      <h1 class="heading--centered">Tickets</h1>
-			      <p class="text--centered caption caption--hug">Livestream only. Conference is sold out</p>
+			      <p class="text--centered caption caption--hug">Livestream only tickets available</p>
 			    </div>
 				<div class="single">
 						<?php if($isError):?>
@@ -87,7 +87,7 @@
 							<?php if(isset($_GET['thehookup'])): ?>
 								<input type="hidden" name="thehookup" value="<?php ?>" />
 							<?php endif ?>
-							<?php if(isset($_GET['live'])): ?>
+							<?php if(TICKETS_LIVESTREAM): ?>
 							<div>
 								<input type="hidden" name="live" value="1" />
 								<h5 class="small-title small-title--light" >Get the HD Conference Live Stream</h5>
@@ -99,7 +99,7 @@
 											<br />You'll get:
 										</p>
 										<ul class="caption text--dark caption--lower">
-											<li>High Definition, 2 Camera streaming to your home or office</li>
+											<li>High Definition conference video streaming to your home or office</li>
 											<li>Lifetime access to all 14 recordings</li>
 											<li>Access to the live conference Slack channel</li>
 										</ul>
@@ -133,6 +133,9 @@
 										</li>
 									</ul>
 									<br />
+									<p class="caption caption--lower">
+										Want to host a viewing at your company or school? Email us on <a href="mailto:tickets@pixelup.co.za?subject=Pixel%20Up!%20Livestream&body=Hi%20%0A%0AWe%27d%20like%20to%20host%20a%20viewing%20of%20the%20Pixel%20Up!%20livestream%20on%20Monday%208th%20and%20Tuesday%209th%20of%20May.%0A%0AHere%27s%20a%20little%20bit%20about%20us...%0A%0AThanks%2C%0A%0A">tickets@pixelup.co.za</a>
+									</p>
 								<ul class="fields-list--2-column no-bullet">
 									<li>
 										<div class="form-group ">

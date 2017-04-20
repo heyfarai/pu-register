@@ -41,6 +41,7 @@
     define ("STUDENT_2DAY_PRICE", 3000);
     define ("LIVESTREAM_PRICE", 1050);
     define ("TEST_PURCHASE", getenv('TEST_PURCHASE'));
+    define ("TICKETS_LIVESTREAM", getenv('TICKETS_LIVESTREAM'));
 
 
 

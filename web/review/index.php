@@ -92,9 +92,7 @@
 	if(isset($_POST['thehookup'])) {
 		$backURL = $backURL . "&thehookup=1";
 	}
-	if($fullData['livestream']>0) {
-		$backURL = $backURL . "&live";
-	}
+
 	// check if we need to go back
 	// is this a student?
 	if(isset($_POST['STUDENT_2DAY'])){
