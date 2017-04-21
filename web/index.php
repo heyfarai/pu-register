@@ -62,7 +62,7 @@
 			<div class="container-fluid" style="min-width: 320px;">
 				<div class="hero--page">
 			      <h1 class="heading--centered">Tickets</h1>
-			      <p class="text--centered caption caption--hug">Livestream only tickets available</p>
+			      <!-- <p class="text--centered caption caption--hug">Livestream only tickets available</p> -->
 			    </div>
 				<div class="single">
 						<?php if($isError):?>
@@ -95,8 +95,7 @@
 								<ul class="no-bullet">
 									<li>
 										<p class="caption caption--lower text--dark">
-											We understand that not everyone can make it to Cape Town, so we are offering Live streaming of all 14 talks on Monday and Tuesday.
-											<br />You'll get:
+											We're offering Live streaming of all <a href="<?php echo TICKETS_HOST_URL ?>/schedule">14 talks on Monday and Tuesday</a> including:
 										</p>
 										<ul class="caption text--dark caption--lower">
 											<li>High Definition conference video streaming to your home or office</li>
