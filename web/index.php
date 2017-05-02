@@ -90,6 +90,39 @@
 							<?php if(TICKETS_LIVESTREAM): ?>
 							<div>
 								<input type="hidden" name="live" value="1" />
+								<?php if(isset($_GET['thehookup'])): ?>
+								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
+		                        <ul class="no-bullet">
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            3 Day Pass
+	                                        </label>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                            	<strong>R 8,500</strong>
+													<span class="caption--ticket"></span>
+	                                            </span>
+	                                        </div>
+	                                        <div class="ticket__quantity ">
+	                                            <span>×</span>
+	                                            <input 	value="<?php echo $f3d ?>"
+														data-validation-optional-if-answered="FULL_3DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+			 											data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_3DAY"
+														name="FULL_3DAY"
+														pattern="\d*" placeholder="0" type="text">
+	                                        </div>
+
+	                                    </div>
+	                                </li>
+								</ul>
+								<?php endif ?>
 								<h5 class="small-title small-title--light" >Get the Conference Live Stream</h5>
 
 								<ul class="no-bullet">
@@ -188,7 +221,7 @@
 								<br />
 								<hr />
 							<?php endif ?>
-							<div style="clear: both; ">
+							<!-- <div style="clear: both; ">
 								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
@@ -201,8 +234,20 @@
 	                                        <div class="ticket__price ticket__price--sold-out ticket__detail__item">
 	                                            <span>
 	                                            	<strong>R 8,500</strong>
-													<span class="caption--ticket">(SOLD OUT)</span>
+													<span class="caption--ticket"></span>
 	                                            </span>
+	                                        </div>
+	                                        <div class="ticket__quantity ">
+	                                            <span>×</span>
+	                                            <input 	value="<?php echo $f3d ?>"
+														data-validation-optional-if-answered="FULL_3DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+			 											data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_3DAY"
+														name="FULL_3DAY"
+														pattern="\d*" placeholder="0" type="text">
 	                                        </div>
 
 	                                    </div>
@@ -296,7 +341,7 @@
 	                                    </div>
 	                                </li>
 	                            </ul>
-							</div>
+							</div> -->
 						</form>
 						<?php include_once('../lib/php/payments-footer.inc.php'); ?>
 					</div>
