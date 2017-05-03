@@ -91,7 +91,7 @@
 							<div>
 								<input type="hidden" name="live" value="1" />
 								<?php if(isset($_GET['thehookup'])): ?>
-								<h5 class="small-title small-title--light">STANDARD TICKETS (Sold Out)</h5>
+								<h5 class="small-title small-title--light">STANDARD TICKETS</h5>
 		                        <ul class="no-bullet">
 	                                <li class="ticket">
 	                                    <div class="ticket__description-wrapper">
@@ -119,6 +119,33 @@
 														pattern="\d*" placeholder="0" type="text">
 	                                        </div>
 
+	                                    </div>
+	                                </li>
+	                                <li class="ticket">
+	                                    <div class="ticket__description-wrapper">
+	                                        <label class="ticket__name">
+	                                            2 Day Pass
+	                                        </label>
+	                                        <div class="ticket__description">2 days of talks</div>
+	                                    </div>
+	                                    <div class="ticket__detail">
+	                                        <div class="ticket__price ticket__detail__item">
+	                                            <span>
+	                                            	<strong>R 6,500</strong>
+	                                            </span>
+	                                        </div>
+	                                        <div class="ticket__quantity ">
+	                                            <span>×</span>
+	                                            <input 	value="<?php echo $f2d ?>"
+														data-validation-optional-if-answered="FULL_3DAY"
+														data-validation-error-msg="Choose a ticket that works for you."
+			 											data-validation-error-msg-container="#ticket-error-msg-container"
+														autocomplete="off"
+														class="ticket__quantity__field"
+														id="FULL_2DAY"
+														name="FULL_2DAY"
+														pattern="\d*" placeholder="0" type="text">
+	                                        </div>
 	                                    </div>
 	                                </li>
 								</ul>
